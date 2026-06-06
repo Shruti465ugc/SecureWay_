@@ -1,3 +1,4 @@
+import EmergencyServices from "../components/EmergencyServices";
 import SOSButton from "../components/SOSButton";
 import "../styles/Home.css";
 <styles />
@@ -25,6 +26,7 @@ function Home() {
         <p>40.7812° N, 73.9665° W</p>
       </div>
       <SOSButton/>
+      <EmergencyServices/>
     </div>
   );
 }
