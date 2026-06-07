@@ -36,3 +36,9 @@
   object-fit: cover;
   border-radius: 10px;
 }
+.success-message {
+  background: #d4edda;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}

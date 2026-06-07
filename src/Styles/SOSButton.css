@@ -1,17 +1,49 @@
-.sos-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
+.sos-modal {
+  margin-top: 20px;
+  padding: 20px;
+
+  border-radius: 12px;
+  border: 1px solid #ddd;
+
+  text-align: center;
+}
+.sos-button {
+  width: 180px;
+  height: 180px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: red;
+  color: white;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .sos-button {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  border: none;
-  background-color: #c62828;
-  color: white;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+.sos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
 }

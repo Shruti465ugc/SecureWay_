@@ -6,11 +6,12 @@ function Report() {
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
     const [image, setImage] = useState(null);
+    const [submitted, setSubmitted] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        alert("Report Submitted!");
+        setSubmitted(true);
 
         console.log({
             incidentType,
@@ -26,6 +27,11 @@ function Report() {
     return (
         <div className="report-container">
             <h1>Report Incident</h1>
+            {submitted && (
+                <div className="success-message">
+                    Report submitted successfully!
+                </div>
+            )}
 
             <form onSubmit={handleSubmit} className="report-form">
 
@@ -53,6 +59,19 @@ function Report() {
                 />
 
                 <label>Location</label>
+
+                <button
+                    type="button"
+                    onClick={() => {
+                        navigator.geolocation.getCurrentPosition((position) => {
+                            setLocation(
+                                `${position.coords.latitude}, ${position.coords.longitude}`
+                            );
+                        });
+                    }}
+                >
+                    Use Current Location
+                </button>
 
                 <input
                     type="text"
