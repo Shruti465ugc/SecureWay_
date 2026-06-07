@@ -1,12 +1,23 @@
-import React from 'react'
-import Home from './pages/Home'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const App = () => {
+import Home from "./pages/Home";
+import Map from "./pages/Map";
+import Report from "./pages/Report";
+import Resources from "./pages/Resources";
+import Profile from "./pages/Profile";
+
+function App() {
   return (
-    <div>
-      <Home />
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/report" element={<Report />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
