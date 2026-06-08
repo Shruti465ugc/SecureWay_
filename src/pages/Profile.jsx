@@ -1,6 +1,8 @@
 import "../styles/Profile.css";
+import { Link } from "react-router-dom";
 
-function Profile() {
+
+function Profile({ user }) {
   return (
     <div className="profile-container">
       <h1>My Profile</h1>
@@ -10,17 +12,19 @@ function Profile() {
           👤
         </div>
 
-        <h2>John Doe</h2>
+        <h2>{user.name}</h2>
 
-        <p>Phone: +91 9876543210</p>
+        <p>Phone: {user.phone}</p>
 
-        <p>Emergency Contact: +91 9123456780</p>
+        <p>Emergency Contact: {user.emergencyContact}</p>
 
-        <p>Email: johndoe@email.com</p>
+        <p>Email: {user.email}</p>
 
-        <button className="edit-btn">
-          Edit Profile
-        </button>
+        <Link to="/edit-profile">
+          <button className="edit-btn">
+            Edit Profile
+          </button>
+        </Link>
       </div>
     </div>
   );
