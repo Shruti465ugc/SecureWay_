@@ -1,15 +1,23 @@
 import { Link } from "react-router-dom";
 import "../styles/LandingPage.css";
+import heroImage from "../assets/hero-image.jpeg";
+import { MapPin } from "lucide-react";
 
 function LandingPage() {
   return (
     <div className="landing">
 
       <nav className="navbar">
-        <h2>SafePath</h2>
+        <h2 className="logo">
+          <MapPin size={28} className="logo-icon" />
+          SafePath
+        </h2>
       </nav>
 
-      <section className="hero">
+      <section className="hero"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+        }}>
 
         <h1>
           Emergency Help When Every Second Counts

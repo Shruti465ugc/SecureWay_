@@ -1,10 +1,12 @@
 .nav-btn {
   text-decoration: none;
-  color: rgb(38, 36, 36);
+  color: white;
   font-size: 14px;
   font-weight: bold;
   padding: 10px 15px;
   border-radius: 8px;
+
+  
 
   
 }
@@ -13,9 +15,11 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: blue;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
+ 
+ 
 }

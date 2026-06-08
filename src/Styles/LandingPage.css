@@ -12,17 +12,32 @@
 .navbar h2 {
   color: #2563eb;
 }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
 
+.logo-icon {
+  color: #ff4d4d;
+  width: 32px;
+  height: 32px;
+}
 .hero {
-  text-align: center;
-  padding: 120px 20px;
-
-  background-image: url("https://images.unsplash.com/photo-1554734867-bf3c00a49371?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZW1lcmdlbmN5JTIwc2VydmljZXxlbnwwfHwwfHx8MA%3D%3D");
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8%;
+  color: white;
 
   background-size: cover;
   background-position: center;
-
-  color: white;
+  background-repeat: no-repeat;
 
   position: relative;
 }
@@ -47,15 +62,17 @@
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   color: white;
   margin-bottom: 20px;
+  align-self: center;
+  padding: 100px;
 }
 
 .hero p {
   max-width: 600px;
   margin: auto;
-  line-height: 1.7;
+  line-height: 1.5;
   color: #dadada;
 }
 
@@ -68,7 +85,7 @@
 
   border-radius: 10px;
 
-  background: #f97316;
+  background: blue;
 
   color: white;
 
@@ -96,7 +113,7 @@
 .stat-card {
   width: 180px;
 
-  background:black;
+  background:blue;
 
   border-radius: 16px;
 
@@ -123,7 +140,7 @@
 .feature-card {
   width: 280px;
 
-  background: rgb(36, 33, 33);
+  background: rgb(2, 2, 198);
 
   border-radius: 16px;
 

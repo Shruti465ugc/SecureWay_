@@ -1,12 +1,17 @@
 import React from 'react'
 import "../styles/Header.css"
+import { MapPin } from "lucide-react";
+
 
 const Header = () => {
   return (
     <div>
        
       <div className="header">
-        <h1 className="logo">SafePath</h1>
+        <h2 className="logo">
+          <MapPin size={28} className="logo-icon" />
+          SafePath
+        </h2>
 
         <img
           src="https://i.pravatar.cc/50"

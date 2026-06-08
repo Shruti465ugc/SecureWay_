@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../styles/SOSButton.css";
 
+
 function SOSButton() {
   const [activated, setActivated] = useState(false);
 
