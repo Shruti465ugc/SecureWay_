@@ -1,19 +1,29 @@
 import "../styles/EmergencyServices.css";
 
-function EmergencyServices() {
+function EmergencyServices({
+  selectedEmergency,
+  setSelectedEmergency,
+}) {
+  const services = ["Police", "Fire", "Ambulance"];
+
   return (
     <div className="services-container">
-      <div className="service-card">
-        <h3>🚓 Police</h3>
-      </div>
-
-      <div className="service-card">
-        <h3>🚒 Fire</h3>
-      </div>
-
-      <div className="service-card">
-        <h3>🚑 Ambulance</h3>
-      </div>
+      {services.map((service) => (
+        <div
+          key={service}
+          className={`service-card ${
+            selectedEmergency === service ? "active" : ""
+          }`}
+          onClick={() => setSelectedEmergency(service)}
+        >
+          <h3>
+            {service === "Police" && "🚓"}
+            {service === "Fire" && "🚒"}
+            {service === "Ambulance" && "🚑"}{" "}
+            {service}
+          </h3>
+        </div>
+      ))}
     </div>
   );
 }
