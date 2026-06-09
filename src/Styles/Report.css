@@ -37,8 +37,11 @@
   border-radius: 10px;
 }
 .success-message {
-  background: #d4edda;
+  background: green;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 15px;
+}
+.bottom-nav {
+  z-index: 1000;
 }

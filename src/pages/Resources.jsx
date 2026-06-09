@@ -1,3 +1,5 @@
+import BottomNav from "../components/BottomNav";
+import PageHeader from "../components/PageHeader";
 import "../styles/Resources.css";
 
 function Resources() {
@@ -31,6 +33,7 @@ function Resources() {
 
   return (
     <div className="resources-container">
+      <PageHeader />
       <h1>Emergency Resources</h1>
 
       {resources.map((resource, index) => (
@@ -47,6 +50,7 @@ function Resources() {
           </div>
         </div>
       ))}
+      <BottomNav />
     </div>
   );
 }

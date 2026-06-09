@@ -1,3 +1,5 @@
+import BottomNav from "../components/BottomNav";
+import PageHeader from "../components/PageHeader";
 import "../styles/Profile.css";
 import { Link } from "react-router-dom";
 
@@ -5,6 +7,7 @@ import { Link } from "react-router-dom";
 function Profile({ user }) {
   return (
     <div className="profile-container">
+      <PageHeader />
       <h1>My Profile</h1>
 
       <div className="profile-card">
@@ -26,6 +29,7 @@ function Profile({ user }) {
           </button>
         </Link>
       </div>
+      <BottomNav /> 
     </div>
   );
 }

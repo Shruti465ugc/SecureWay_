@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../styles/Report.css";
+import BottomNav from "../components/BottomNav";
+import PageHeader from "../components/PageHeader";
 
 function Report() {
     const [incidentType, setIncidentType] = useState("");
@@ -26,6 +28,7 @@ function Report() {
 
     return (
         <div className="report-container">
+            <PageHeader />
             <h1>Report Incident</h1>
             {submitted && (
                 <div className="success-message">
@@ -99,6 +102,7 @@ function Report() {
                 </button>
 
             </form>
+            <BottomNav />
         </div>
     );
 }

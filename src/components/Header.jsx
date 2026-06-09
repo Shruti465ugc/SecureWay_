@@ -67,7 +67,7 @@ const Header = () => {
       </div>
 
       <div className="location-card">
-        <p className="location-title">
+        <p className="location-title" style={{ color: "white", fontWeight: "bold" }}>
           YOUR CURRENT LOCATION
         </p>
 
