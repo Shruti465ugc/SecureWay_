@@ -113,7 +113,7 @@
 .stat-card {
   width: 180px;
 
-  background:blue;
+  background:rgb(222, 219, 231);
 
   border-radius: 16px;
 
@@ -122,7 +122,7 @@
   text-align: center;
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  color: white;
+  color: blue;
 }
 
 .features {
@@ -140,7 +140,7 @@
 .feature-card {
   width: 280px;
 
-  background: rgb(2, 2, 198);
+  background: rgb(222, 219, 231);
 
   border-radius: 16px;
 
@@ -148,7 +148,7 @@
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 
-  color: white;
+  color: blue;
 }
 
 .feature-card h3 {
