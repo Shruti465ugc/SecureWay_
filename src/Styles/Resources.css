@@ -1,26 +1,93 @@
-.resources-container {
-  padding: 20px;
-  max-width: 700px;
-  margin: auto;
+
+.resources-container * {
+  transition: all 0.15s ease;
+  
 }
 
-.resources-container h1 {
-  text-align: center;
-  margin-bottom: 20px;
+/* GRID (stable and clean spacing) */
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 16px;
 }
 
+/* CARD - minimal, clean, no flashy effects */
 .resource-card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-
-  padding: 15px;
-  margin-bottom: 15px;
-
-  border-radius: 10px;
-  border: 1px solid #ddd;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
 }
 
+/* Hover = subtle only (no scaling drama) */
+.resource-card:hover {
+  border-color: #d0d0d0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ICON */
 .resource-icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* TITLE */
+.resource-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+/* EMERGENCY NUMBER */
+.resource-number {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d32f2f;
+}
+
+/* HEADER (clean and readable) */
+.page-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.page-header p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* MOBILE RESPONSIVE (simple breakpoints) */
+@media (max-width: 768px) {
+  .resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-card {
+    padding: 14px;
+  }
+}
+
+/* ACCESSIBILITY */
+.resource-card:focus-visible {
+  outline: 2px solid #d32f2f;
+  outline-offset: 2px;
+}
+
+/* OPTIONAL: subtle divider spacing if bottom nav exists */
+.bottom-nav-spacing {
+  height: 70px;
 }

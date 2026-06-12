@@ -4,23 +4,26 @@ function EmergencyServices({
   selectedEmergency,
   setSelectedEmergency,
 }) {
-  const services = ["Police", "Fire", "Ambulance"];
+  const services = [
+    { name: "Police", icon: "🚓" },
+    { name: "Fire", icon: "🚒" },
+    { name: "Ambulance", icon: "🚑" },
+    { name: "Women Safety", icon: "🛡️" },
+    { name: "Flood", icon: "🌊" },
+    { name: "Other", icon: "🆘" },
+  ];
 
   return (
     <div className="services-container">
       {services.map((service) => (
         <div
           key={service}
-          className={`service-card ${
-            selectedEmergency === service ? "active" : ""
-          }`}
+          className={`service-card ${selectedEmergency === service ? "active" : ""
+            }`}
           onClick={() => setSelectedEmergency(service)}
         >
           <h3>
-            {service === "Police" && "🚓"}
-            {service === "Fire" && "🚒"}
-            {service === "Ambulance" && "🚑"}{" "}
-            {service}
+            {service.icon} {service.name}
           </h3>
         </div>
       ))}

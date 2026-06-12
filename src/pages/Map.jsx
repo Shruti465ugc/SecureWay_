@@ -8,8 +8,8 @@ function Map() {
   return (
 
     <div className="map-page">
-      <PageHeader/>
-     
+      <PageHeader />
+
       <div className="map-header">
         <h1>🗺️ Live Emergency Map</h1>
         <p>
@@ -17,12 +17,23 @@ function Map() {
         </p>
       </div>
 
+
       <div className="location-card">
         <h3>📍 Current Location</h3>
-        <p>Fetching location...</p>
+
+        <p>Model Town, Jalandhar</p>
+
+        <span>🟢 GPS Active</span>
       </div>
 
+
       <div className="map-container">
+        <div className="map-legend">
+          <p>🟢 You</p>
+          <p>🚓 Police</p>
+          <p>🚑 Ambulance</p>
+          <p>🚒 Fire Station</p>
+        </div>
         <MapComponent />
       </div>
 
@@ -41,11 +52,33 @@ function Map() {
           <h3>🚒 Fire</h3>
           <p>Find nearby fire stations.</p>
         </div>
+        <div className="service-card">
+          <h3>🏥 Hospital</h3>
+          <p>Find nearby hospitals.</p>
+        </div>
+
+        <section className="quick-actions">
+
+          <h2>Quick Actions</h2>
+
+          <div className="actions-grid">
+
+            <button>📍 Share Location</button>
+
+            <button>🚨 Report Incident</button>
+
+            <button>📞 Emergency Call</button>
+
+            <button>🧭 Navigate</button>
+
+          </div>
+
+        </section>
 
       </div>
       <BottomNav />
     </div>
-    
+
 
   );
 }

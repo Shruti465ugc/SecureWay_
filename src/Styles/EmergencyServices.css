@@ -21,3 +21,8 @@
 .service-card:hover {
   transform: translateY(-4px);
 }
+.service-card.active{
+  border:2px solid #2563eb;
+  background:#eff6ff;
+  transform:translateY(-5px);
+}

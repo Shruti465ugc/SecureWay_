@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Header.css";
 import { MapPin } from "lucide-react";
+import { CircleUserRound } from "lucide-react";
 
 const Header = () => {
   const [locationName, setLocationName] = useState("Detecting location...");
@@ -59,11 +60,10 @@ const Header = () => {
           SafePath
         </h2>
 
-        <img
-          src="https://i.pravatar.cc/50"
-          alt="profile"
-          className="profile-pic"
-        />
+       <CircleUserRound size={42}  alt="profile"
+          className="profile-pic"/>
+         
+        
       </div>
 
       <div className="location-card">

@@ -26,3 +26,20 @@ body{
   min-height: 100vh;
   padding: 20px;
 }
+.status-card{
+  background:white;
+  margin-top:20px;
+  padding:18px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.status-card h3{
+  color:#16a34a;
+}
+
+.status-card span{
+  color:#777;
+  font-size:14px;
+}
