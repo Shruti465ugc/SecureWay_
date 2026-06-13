@@ -122,7 +122,7 @@ function SOSButton({ selectedEmergency }) {
 
             <h2>SOS ACTIVATED</h2>
 
-            <h3>{selectedEmergency}</h3>
+            <h3>type: {selectedEmergency.name} <span>{selectedEmergency.icon}</span></h3>
 
             <hr />
 
