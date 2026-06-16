@@ -1,13 +1,14 @@
 .landing {
   min-height: 100vh;
-  background: #f8fafc;
+  background: linear-gradient(180deg, #081321 0%, #0d1b2a 100%);
+ 
 }
 .navbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:20px 40px;
-   background: white;
+   background: #009fd8;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
@@ -19,7 +20,7 @@
 
 .nav-links a{
   text-decoration:none;
-  color:#444;
+  color:white;
   font-weight:600;
 }
 
@@ -34,7 +35,7 @@
 
 
 .navbar h2 {
-  color: #2563eb;
+  color: whitesmoke;
 }
 .logo {
   display: flex;
@@ -88,7 +89,7 @@
   color: white;
 
   background-size: cover;
-  background-position: center;
+  background-position: center bottom;
   background-repeat: no-repeat;
 
   position: relative;
@@ -141,7 +142,7 @@
 
   border-radius: 10px;
 
-  background: blue;
+  background: #009fd8;
 
   color: white;
 
@@ -150,17 +151,28 @@
   font-weight: bold;
 
   transition: 0.3s;
+
+  outline-style: double;
+
+  cursor: pointer;
+
+  
 }
+.start-btn:hover{
+   transform: translateY(-6px);
+
+}
+
 
 .impact {
   padding: 80px 8%;
-  background: white;
+  background: rgb(5, 21, 44);
   text-align: center;
 }
 
 .impact h2 {
   font-size: 2.8rem;
-  color: #2563eb;
+  color: #009fd8;
   margin-bottom: 50px;
 }
 
@@ -173,7 +185,7 @@
 }
 
 .impact-card {
-  background: #f8fafc;
+  background: #1b30436e;
   padding: 35px 20px;
   border-radius: 18px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
@@ -182,6 +194,8 @@
 
 .impact-card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.18);
+  border: #009fd8;
 }
 
 .impact-card h3 {
@@ -191,18 +205,18 @@
 }
 
 .impact-card p {
-  color: #555;
+  color: white;
 }
 
 .features {
   padding: 80px 8%;
-  background: #f8fafc;
+  background: rgb(8, 24, 49);
   text-align: center;
 }
 
 .features h2 {
   font-size: 2.8rem;
-  color: #2563eb;
+  color: #009fd8;
   margin-bottom: 50px;
 }
 
@@ -215,7 +229,7 @@
 }
 
 .feature-card {
-  background: white;
+  background:  #1b30436e;
   border-radius: 20px;
   padding: 35px 25px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -229,25 +243,25 @@
 }
 
 .feature-card h3 {
-  color: #2563eb;
+  color: #009fd8;
   margin-bottom: 15px;
   font-size: 1.4rem;
 }
 
 .feature-card p {
-  color: #555;
+  color: white;
   line-height: 1.7;
 }
 
 .how-it-works {
   padding: 80px 8%;
-  background: #f8fafc;
+  background: rgb(16, 32, 55);
   text-align: center;
 }
 
 .how-it-works h2 {
   font-size: 2.8rem;
-  color: #2563eb;
+  color: #009fd8;
   margin-bottom: 50px;
   font-weight: 700;
 }
@@ -261,7 +275,7 @@
 
 .step {
   width: 250px;
-  background: white;
+  background:#1b30436e;
   padding: 30px 20px;
   border-radius: 18px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -276,12 +290,12 @@
 
 .step h3 {
   font-size: 1.5rem;
-  color: #2563eb;
+  color: #009fd8;
   margin-bottom: 15px;
 }
 
 .step p {
-  color: #555;
+  color: white;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -299,7 +313,7 @@
 }
 
 .footer p {
-  color: #cbd5e1;
+  color: whitesmoke;
   margin: 10px 0;
   line-height: 1.6;
 }

@@ -47,9 +47,7 @@ function LandingPage() {
             </button>
           </Link>
 
-          <button className="secondary-btn">
-            Report Incident
-          </button>
+          
         </div>
 
         <div className="hero-tags">
