@@ -1,0 +1,44 @@
+{
+  "volunteers": [
+    {
+      "id": 1,
+      "name": "Rohan Mehta",
+      "skill": "First Aid",
+      "phone": "9876543210",
+      "lat": 28.6139,
+      "lon": 77.209,
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "Simran Kaur",
+      "skill": "CPR Certified",
+      "phone": "9876501234",
+      "lat": 28.6155,
+      "lon": 77.2105,
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "Arjun Sharma",
+      "skill": "Driver / Transport",
+      "phone": "9876512345",
+      "lat": 28.61,
+      "lon": 77.205,
+      "available": true
+    },
+    {
+      "id": 4,
+      "name": "Neha Verma",
+      "skill": "Nurse",
+      "phone": "9876523456",
+      "lat": 28.618,
+      "lon": 77.213,
+      "available": false
+    }
+  ],
+  "reports": [],
+  "sosAlerts": [],
+  "nextReportId": 1,
+  "nextSosId": 1
+}
