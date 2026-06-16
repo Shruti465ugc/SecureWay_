@@ -2,10 +2,11 @@
   margin: 20px;
   padding: 18px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #1b30436e;
   backdrop-filter: blur(10px);
-  color: blue;
+  color: white;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
 }
 
 .contacts-card h3 {
@@ -34,7 +35,7 @@
 .contact-row p {
   margin-top: 4px;
   font-size: 0.85rem;
-  color: blue;
+  color: white;
 }
 
 .contact-row button {
@@ -56,10 +57,10 @@
   width: 100%;
   margin-top: 16px;
   padding: 12px;
-  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border: 2px dashed #00bfff ;
   border-radius: 12px;
   background: transparent;
-  color: blue;
+  color: white;
   cursor: pointer;
   font-size: 15px;
   transition: 0.3s;

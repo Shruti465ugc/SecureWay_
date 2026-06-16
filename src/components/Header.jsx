@@ -55,19 +55,22 @@ const Header = () => {
   return (
     <div>
       <div className="header">
-        <h2 className="logo">
-          <MapPin size={28} className="logo-icon" />
-          SafePath
-        </h2>
+        <div className="logocard">
+          <h2 className="logo">
+            <MapPin size={28} className="logo-icon" />
+            SafePath
+          </h2>
+        </div>
+        <div className="profilecard">
+          <CircleUserRound size={42} alt="profile"
+            className="profile-pic" />
+        </div>
 
-       <CircleUserRound size={42}  alt="profile"
-          className="profile-pic"/>
-         
-        
+
       </div>
 
-      <div className="location-card">
-        <p className="location-title" style={{ color: "white", fontWeight: "bold" }}>
+      <div className="location-card" style={{ backgroundColor: "#1b30436e" }}>
+        <p className="location-title" style={{ color: "white", fontWeight: "bold", }}>
           YOUR CURRENT LOCATION
         </p>
 

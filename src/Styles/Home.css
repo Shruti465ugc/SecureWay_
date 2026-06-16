@@ -1,4 +1,4 @@
-*{
+-----**{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -18,16 +18,17 @@ body{
   text-align: center;
   max-width: 600px;
   margin: 20px auto;
-  color: #555;
+  color: white;
   font-size: 14px;
   line-height: 1.6;
 }
 .home-container {
   min-height: 100vh;
   padding: 20px;
+  background-color: rgb(2, 16, 35);
 }
 .status-card{
-  background:white;
+  background:#1b30436e;
   margin-top:20px;
   padding:18px;
   border-radius:16px;
@@ -36,10 +37,14 @@ body{
 }
 
 .status-card h3{
-  color:#16a34a;
+  color:#08f960;
+  font-size: larger;
+}
+.status-card p{
+  color: aqua;
 }
 
 .status-card span{
-  color:#777;
+  color:white;
   font-size:14px;
-}
+}*

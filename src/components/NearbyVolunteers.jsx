@@ -17,7 +17,7 @@ function NearbyVolunteers() {
     ];
 
     return (
-        <div className="volunteer-card">
+        <div className="volunteer-section">
             <h3>🤝 Nearby Volunteers</h3>
 
             {volunteers.map((volunteer, index) => (
