@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BottomNav from "../components/BottomNav";
 import PageHeader from "../components/PageHeader";
 import "../styles/Resources.css";
@@ -6,7 +6,7 @@ import "../styles/Resources.css";
 import {
   Shield,
   Flame,
- HeartPulse,
+  HeartPulse,
   PhoneCall,
   TriangleAlert,
   BookOpen,
@@ -17,7 +17,10 @@ import {
 function Resources() {
   const [openGuide, setOpenGuide] = useState(null);
 
- 
+  //  NEW STATES (backend integration)
+  const [nearbyPlaces, setNearbyPlaces] = useState([]);
+  const [loadingNearby, setLoadingNearby] = useState(false);
+
 
   const emergencyContacts = [
     {
@@ -52,7 +55,7 @@ function Resources() {
     },
   ];
 
- 
+
 
   const guides = [
     {
@@ -116,11 +119,47 @@ function Resources() {
     },
   ];
 
+  //  BACKEND CALL
+  const fetchNearby = async (lat, lon) => {
+    try {
+      setLoadingNearby(true);
+
+      const res = await fetch(
+        `http://localhost:5000/api/services/nearby?lat=${lat}&lon=${lon}`
+      );
+
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setNearbyPlaces(data)
+      } else {
+        setNearbyPlaces([])
+        console.error("Backend returned invalid data:", data)
+      }
+    } catch (err) {
+      console.error("Failed to fetch nearby places:", err);
+    } finally {
+      setLoadingNearby(false);
+    }
+  };
+
+  // AUTO LOCATION FETCH
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        fetchNearby(latitude, longitude);
+      },
+      (err) => {
+        console.error("Location permission denied", err);
+      }
+    );
+  }, []);
+
   return (
     <div className="resources-container">
       <PageHeader />
 
-  
+
 
       <section className="resources-hero">
         <div className="hero-badge">
@@ -137,7 +176,7 @@ function Resources() {
         </p>
       </section>
 
-     
+
 
       <section className="resource-section">
         <div className="section-heading">
@@ -166,7 +205,7 @@ function Resources() {
         </div>
       </section>
 
-     
+
 
       <section className="resource-section">
 
@@ -231,7 +270,7 @@ function Resources() {
 
       </section>
 
-           
+
 
       <section className="resource-section">
         <div className="section-heading">
@@ -251,59 +290,41 @@ function Resources() {
         </div>
       </section>
 
-      
 
+      {/*  LIVE NEARBY SECTION (BACKEND CONNECTED) */}
       <section className="resource-section">
         <div className="section-heading">
           <Shield size={22} />
           <h2>Find Nearby Help</h2>
         </div>
+        {loadingNearby ? (
+          <p>Loading nearby services...</p>
+        ) : (
+          <div className="nearby-grid">
+            {nearbyPlaces.map((place) => (
+              <div key={place.id} className="nearby-card">
+                <div className="nearby-icon">
+                  {place.type === "hospital"
+                    ? "🏥"
+                    : place.type === "police"
+                      ? "🚓"
+                      : place.type === "fire_station"
+                        ? "🚒"
+                        : place.type === "pharmacy"
+                          ? "💊"
+                          : "📍"}
+                </div>
 
-        <div className="nearby-grid">
-          <div className="nearby-card">
-            <div className="nearby-icon">🏥</div>
-            <h3>Hospitals</h3>
-            <p>Find the nearest hospital</p>
+                <h3>{place.name}</h3>
+                <p>{place.type}</p>
+              </div>
+            ))}
           </div>
-
-          <div className="nearby-card">
-            <div className="nearby-icon">🚓</div>
-            <h3>Police Stations</h3>
-            <p>Locate nearby police help</p>
-          </div>
-
-          <div className="nearby-card">
-            <div className="nearby-icon">🚒</div>
-            <h3>Fire Stations</h3>
-            <p>Emergency fire response</p>
-          </div>
-
-          <div className="nearby-card">
-            <div className="nearby-icon">🏠</div>
-            <h3>Relief Shelters</h3>
-            <p>Safe shelter locations</p>
-          </div>
-        </div>
+        )}
       </section>
 
-     
 
-      <section className="resource-section">
-        <div className="tip-card">
-          <div className="tip-title">
-            💡 Safety Tip of the Day
-          </div>
 
-          <p>
-            During a fire, stay low to avoid smoke
-            inhalation and never use elevators.
-            Exit the building immediately and call
-            emergency services from a safe location.
-          </p>
-        </div>
-      </section>
-
-      
 
       <section className="resource-section">
         <div className="volunteer-card">
@@ -321,7 +342,7 @@ function Resources() {
         </div>
       </section>
 
-      
+
 
       <section className="footer-card">
         <h3>SafeRoute</h3>
