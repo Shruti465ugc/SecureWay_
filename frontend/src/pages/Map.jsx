@@ -6,12 +6,16 @@ import "../styles/Map.css";
 
 function Map() {
   const [services, setServices] = useState([]);
-   const [userLocation, setUserLocation] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState("Detecting location...");
   const [error, setError] = useState(null);
   const [volunteers, setVolunteers] = useState([]);
-
+  const [reports, setReports] = useState([]);
+  const [selectedTarget, setSelectedTarget] = useState(null);
+  const highIncidents = reports.filter(
+    (r) => r.severity === "High"
+  ).length;
   useEffect(() => {
     fetchNearbyServices();
   }, []);
@@ -29,7 +33,7 @@ function Map() {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
 
-            setUserLocation({ lat, lon });
+          setUserLocation({ lat, lon });
 
           setLocation(
             `${lat.toFixed(4)}° N, ${lon.toFixed(4)}° E`
@@ -48,19 +52,29 @@ function Map() {
           }
 
           setServices(data);
+           console.log("Services:", data);
           try {
-  const volunteerRes = await fetch(
-    `http://localhost:5000/api/volunteers/nearby?lat=${lat}&lon=${lon}&radius=5`
-  );
+            const volunteerRes = await fetch(
+              `http://localhost:5000/api/volunteers/nearby?lat=${lat}&lon=${lon}&radius=5`
+            );
 
-  const volunteerData = await volunteerRes.json();
+            const volunteerData = await volunteerRes.json();
 
-  if (volunteerRes.ok) {
-    setVolunteers(volunteerData);
-  }
-} catch (err) {
-  console.error("Volunteer fetch error:", err);
-}
+            if (volunteerRes.ok) {
+              setVolunteers(volunteerData);
+            }
+            const reportsRes = await fetch(
+              "http://localhost:5000/api/reports"
+            );
+
+            const reportsData = await reportsRes.json();
+
+            if (reportsRes.ok) {
+              setReports(reportsData);
+            }
+          } catch (err) {
+            console.error("Volunteer fetch error:", err);
+          }
           setError(null);
         } catch (err) {
           console.error("Service fetch error:", err);
@@ -76,6 +90,7 @@ function Map() {
       }
     );
   };
+
 
   const getIcon = (type) => {
     switch (type) {
@@ -124,22 +139,48 @@ function Map() {
         <p>{location}</p>
         <span>🟢 GPS Active</span>
       </section>
+   <div className="map-legend">
+  <button onClick={() => setSelectedTarget("user")}>
+    🟢 You
+  </button>
+
+  <button onClick={() => setSelectedTarget("police")}>
+    🚓 Police
+  </button>
+
+  <button onClick={() => setSelectedTarget("hospital")}>
+    🏥 Hospital
+  </button>
+
+  <button onClick={() => setSelectedTarget("fire_station")}>
+    🚒 Fire
+  </button>
+
+  <button onClick={() => setSelectedTarget("pharmacy")}>
+    💊 Pharmacy
+  </button>
+</div>
+
+    
 
       <section className="map-container">
-        <div className="map-legend">
-          <span>🟢 You</span>
-          <span>🚓 Police</span>
-          <span>🏥 Hospital</span>
-          <span>🚒 Fire</span>
-          <span>💊 Pharmacy</span>
-        </div>
-
-         <MapComponent
+  <MapComponent
   userLocation={userLocation}
   services={services}
   volunteers={volunteers}
+  reports={reports}
+  selectedTarget={selectedTarget}
 />
       </section>
+
+        <section>
+        <div className="stats-bar">
+          <div>🚨 {reports.length} Incidents</div>
+          <div>⚠ {highIncidents} High Risk</div>
+          <div>🤝 {volunteers.length} Volunteers</div>
+          <div>🏥 {services.length} Services</div>
+        </div>
+   </section >
 
       <section className="services-section">
         <h2>Nearby Services</h2>
@@ -180,7 +221,8 @@ function Map() {
       </section>
 
       <BottomNav />
-    </div>
+    </div >
+  
   );
 }
 

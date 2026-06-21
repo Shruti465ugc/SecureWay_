@@ -66,7 +66,7 @@ body,
   border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   z-index: 1;
-  height: calc(100vh - 70px);
+  
 }
 
 .map-legend {
@@ -179,4 +179,20 @@ body,
 }
 .leaflet-container {
   z-index: 1;
+}
+.stats-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  margin-bottom: 10px;
+  padding: 10px;
+
+  border-radius: 12px;
+
+  background: rgba(0,0,0,0.75);
+
+  color: white;
+
+  font-weight: 600;
 }
