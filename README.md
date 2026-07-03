@@ -1,3 +1,4 @@
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7594acdf-8385-4e38-8255-14dc4cbd6446" />
 
 
 # 🛡️ SafePath
