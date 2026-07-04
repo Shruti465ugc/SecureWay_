@@ -15,7 +15,7 @@ function SOSButton({ selectedEmergency }) {
   const timerRef = useRef(null);
   const intervalRef = useRef(null);
 
-  const API_URL = "http://localhost:5000/api/sos";
+  const API_URL = "https://safepath-hackhazard-project.onrender.com/api/sos";
 
   const startHold = () => {
     if (!selectedEmergency) return;

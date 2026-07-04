@@ -125,7 +125,7 @@ function Resources() {
       setLoadingNearby(true);
 
       const res = await fetch(
-        `http://localhost:5000/api/services/nearby?lat=${lat}&lon=${lon}`
+        `https://safepath-hackhazard-project.onrender.com/api/services/nearby?lat=${lat}&lon=${lon}`
       );
 
       const data = await res.json();

@@ -39,7 +39,7 @@ function Report() {
     const fetchStats = async () => {
         try {
             const res = await fetch(
-                "http://localhost:5000/api/reports/stats"
+                "https://safepath-hackhazard-project.onrender.com/api/reports/stats"
             );
 
             const data = await res.json();
@@ -52,7 +52,7 @@ function Report() {
     const fetchReports = async () => {
         try {
             const res = await fetch(
-                "http://localhost:5000/api/reports"
+                "https://safepath-hackhazard-project.onrender.com/api/reports"
             );
 
             const data = await res.json();
@@ -117,7 +117,7 @@ function Report() {
 
         try {
             const response = await fetch(
-                "http://localhost:5000/api/reports",
+                "https://safepath-hackhazard-project.onrender.com/api/reports",
                 {
                     method: "POST",
                     headers: {

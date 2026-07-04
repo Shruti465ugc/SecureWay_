@@ -40,7 +40,7 @@ function Map() {
           );
 
           const res = await fetch(
-            `http://localhost:5000/api/services/nearby?lat=${lat}&lon=${lon}`
+            `https://safepath-hackhazard-project.onrender.com/api/services/nearby?lat=${lat}&lon=${lon}`
           );
 
           const data = await res.json();
@@ -55,7 +55,7 @@ function Map() {
            console.log("Services:", data);
           try {
             const volunteerRes = await fetch(
-              `http://localhost:5000/api/volunteers/nearby?lat=${lat}&lon=${lon}&radius=5`
+              `https://safepath-hackhazard-project.onrender.com/api/volunteers/nearby?lat=${lat}&lon=${lon}&radius=5`
             );
 
             const volunteerData = await volunteerRes.json();
@@ -64,7 +64,7 @@ function Map() {
               setVolunteers(volunteerData);
             }
             const reportsRes = await fetch(
-              "http://localhost:5000/api/reports"
+              "https://safepath-hackhazard-project.onrender.com/api/reports"
             );
 
             const reportsData = await reportsRes.json();
