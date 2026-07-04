@@ -140,23 +140,23 @@ function Map() {
         <span>🟢 GPS Active</span>
       </section>
    <div className="map-legend">
-  <button onClick={() => setSelectedTarget("user")}>
+  <button className="legend_btn" onClick={() => setSelectedTarget("user")}>
     🟢 You
   </button>
 
-  <button onClick={() => setSelectedTarget("police")}>
+  <button className="legend_btn" onClick={() => setSelectedTarget("police")}>
     🚓 Police
   </button>
 
-  <button onClick={() => setSelectedTarget("hospital")}>
+  <button className="legend_btn" onClick={() => setSelectedTarget("hospital")}>
     🏥 Hospital
   </button>
 
-  <button onClick={() => setSelectedTarget("fire_station")}>
+  <button className="legend_btn" onClick={() => setSelectedTarget("fire_station")}>
     🚒 Fire
   </button>
 
-  <button onClick={() => setSelectedTarget("pharmacy")}>
+  <button className="legend_btn" onClick={() => setSelectedTarget("pharmacy")}>
     💊 Pharmacy
   </button>
 </div>

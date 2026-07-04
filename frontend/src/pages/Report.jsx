@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     AlertTriangle,
     Car,
@@ -15,12 +15,52 @@ import "../styles/Report.css";
 
 function Report() {
     const [incidentType, setIncidentType] = useState("");
+    const [reportCode, setReportCode] = useState("");
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
     const [image, setImage] = useState(null);
     const [severity, setSeverity] = useState("Medium");
     const [anonymous, setAnonymous] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [stats, setStats] = useState({
+        Accident: 0,
+        Fire: 0,
+        "Medical Emergency": 0,
+        Crime: 0,
+    });
+
+    const [recentReports, setRecentReports] =
+        useState([]);
+    useEffect(() => {
+        fetchStats();
+        fetchReports();
+    }, []);
+
+    const fetchStats = async () => {
+        try {
+            const res = await fetch(
+                "http://localhost:5000/api/reports/stats"
+            );
+
+            const data = await res.json();
+            setStats(data);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const fetchReports = async () => {
+        try {
+            const res = await fetch(
+                "http://localhost:5000/api/reports"
+            );
+
+            const data = await res.json();
+            setRecentReports(data);
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     const incidents = [
         {
@@ -63,33 +103,48 @@ function Report() {
 
     //     setSubmitted(true);
     // };
-    const sendReport = (e) => {
+
+    const sendReport = async (e) => {
         e.preventDefault();
-        // Here you would typically send the report data to your backend server
-        // using fetch api
+
         const reportData = {
             incidentType,
             description,
             location,
             severity,
             anonymous,
-            image,
         };
+
         try {
-            // Example POST request
-            fetch("http://localhost:5000/api/reports", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json", // Set the content type to JSON
-                },
-                body: JSON.stringify(reportData), // Convert the report data to JSON string
+            const response = await fetch(
+                "http://localhost:5000/api/reports",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/json",
+                    },
+                    body: JSON.stringify(reportData),
                 }
-            )
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    "Failed to submit report"
+                );
+            }
+
             setSubmitted(true);
+
+            fetchStats();
+            fetchReports();
         } catch (error) {
-            console.error("Error submitting report:", error);
+            console.error(
+                "Error submitting report:",
+                error
+            );
         }
-    }
+    };
 
     return (
         <div className="report-container">
@@ -120,30 +175,76 @@ function Report() {
                     <div className="community-grid">
                         <div className="community-card">
                             <Car size={28} />
-                            <h3>31</h3>
+                            <h3>{stats.Accident}</h3>
                             <p>Accidents</p>
                         </div>
 
                         <div className="community-card">
                             <Flame size={28} />
-                            <h3>8</h3>
+                            <h3>{stats.Fire}</h3>
                             <p>Fires</p>
                         </div>
 
                         <div className="community-card">
                             <Ambulance size={28} />
-                            <h3>14</h3>
+                            <h3>{stats["Medical Emergency"]}</h3>
                             <p>Medical</p>
                         </div>
 
                         <div className="community-card">
                             <ShieldAlert size={28} />
-                            <h3>6</h3>
+                            <h3>{stats.Crime}</h3>
                             <p>Crime</p>
                         </div>
+
+                        <div className="community-card">
+                            < Waves size={28} />
+                            <h3>{stats.Flood}</h3>
+                            <p>Flood</p>
+                        </div>
+
+                        <div className="community-card">
+                            <MapPin size={28} />
+                            <h3>{stats.Other}</h3>
+                            <p>Other</p>
+                        </div>
+
                     </div>
                 </div>
+                <div className="section-card">
+                    <h2 className="section-title">
+                        Recent Reports
+                    </h2>
 
+                    {recentReports
+                        .slice(0, 5)
+                        .map((report) => (
+                            <div
+                                key={report.id}
+                                style={{
+                                    marginBottom: "10px",
+                                    padding: "12px",
+                                    border:
+                                        "1px solid #2a3b52",
+                                    borderRadius: "10px",
+                                }}
+                            >
+                                <h4>
+                                    {report.code} -{" "}
+                                    {report.incidentType}
+                                </h4>
+
+                                <p>
+                                    Severity:{" "}
+                                    {report.severity}
+                                </p>
+
+                                <p>
+                                    Status: {report.status}
+                                </p>
+                            </div>
+                        ))}
+                </div>
                 <form
                     className="report-form"
                     onSubmit={sendReport}

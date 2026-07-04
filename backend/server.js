@@ -1,5 +1,9 @@
+const path = require("path");
 const express = require('express')
 const cors = require('cors')
+
+const PORT = 5000
+const _dirname = path.resolve();
 
 const app = express()
 
@@ -15,12 +19,16 @@ app.use('/api/reports', reportsRoute)
 app.use('/api/volunteers', volunteersRoute)
 app.use('/api/sos', sosRoute)
 app.use('/api/services', servicesRoute)
+app.use(express.static(path.join(_dirname, '/frontend/dist')))
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(_dirname, "frontend" , "dist" , "index.html"))
+});
 
 app.get('/', (req, res) => {
   res.send('SafePath backend is running')
 })
 
-const PORT = 5000
+
 
 app.listen(PORT, () => {
   console.log('server started on port ' + PORT)

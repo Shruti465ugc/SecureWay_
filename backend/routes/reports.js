@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
     location: body.location || null,
     severity: body.severity || 'Medium',
     anonymous: body.anonymous ? true : false,
-    status: 'Under Review',
+   status: 'Pending',
     createdAt: new Date().toISOString()
   }
 
@@ -59,5 +59,38 @@ router.post('/', (req, res) => {
 
   res.status(201).json(newReport)
 })
+router.patch('/:id/status', (req, res) => {
+  const { status } = req.body;
+
+  const allowedStatuses = [
+    'Pending',
+    'In Progress',
+    'Resolved'
+  ];
+
+  if (!allowedStatuses.includes(status)) {
+    return res.status(400).json({
+      error: 'Invalid status'
+    });
+  }
+
+  const db = readDB();
+
+  const report = db.reports.find(
+    r => r.id === Number(req.params.id)
+  );
+
+  if (!report) {
+    return res.status(404).json({
+      error: 'Report not found'
+    });
+  }
+
+  report.status = status;
+
+  writeDB(db);
+
+  res.json(report);
+});
 
 module.exports = router
