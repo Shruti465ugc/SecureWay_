@@ -166,19 +166,20 @@ npm start
 
 # 📸 Screenshots
 
-> Add screenshots after deployment.
-
 ### 🏠 Home Page
 
-*(Coming Soon)*
+<img width="939" height="437" alt="Screenshot 2026-07-04 165923" src="https://github.com/user-attachments/assets/808c766d-83c4-4a76-a646-be0c54e8fc18" />
+
 
 ### 🗺️ Live Map
 
-*(Coming Soon)*
+<img width="934" height="440" alt="Screenshot 2026-07-04 170159" src="https://github.com/user-attachments/assets/85ea8e89-203f-4c52-b21c-25f1f8b1ed53" />
+
 
 ### 🚨 Emergency Dashboard
 
-*(Coming Soon)*
+<img width="942" height="444" alt="Screenshot 2026-07-04 170044" src="https://github.com/user-attachments/assets/baf704c8-6901-44d3-ad28-80998897788d" />
+
 
 ---
 
