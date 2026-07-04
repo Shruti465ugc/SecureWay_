@@ -15,9 +15,7 @@ SafePath is a full-stack web application that helps users report emergencies, sh
 
 ## 🌍 Live Demo
 
-**Frontend:** *(Add Vercel link after deployment)*
-
-**Backend API:** *(Hosted on Render)*
+https://safepath-hackhazard-project.onrender.com
 
 ---
 
