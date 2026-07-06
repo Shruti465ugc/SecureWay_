@@ -85,7 +85,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 8%;
+  padding:40px 20px;
   color: white;
 
   background-size: cover;
@@ -117,7 +117,7 @@
 .hero h1 {
   position: relative;
   z-index: 1;
-  font-size: 4rem;
+  font-size:clamp(2.2rem,6vw,4rem);
   font-weight: 800;
   max-width: 850px;
   margin-bottom: 25px;
@@ -128,11 +128,166 @@
   position: relative;
   z-index: 1;
   max-width: 650px;
-  font-size: 1.2rem;
+  font-size:clamp(1rem,2vw,1.2rem);
   line-height: 1.8;
   color: #e5e7eb;
 }
 
+
+.menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #009fd8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 20px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.mobile-launch-btn {
+  width: 180px;
+}
+
+@media (max-width: 768px) {
+
+  .navbar {
+    position: relative;
+    padding: 16px 20px;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Hide desktop navigation */
+  .nav-links {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero {
+    min-height: 80vh;
+    text-align: center;
+    align-items: center;
+    padding: 60px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    max-width: 100%;
+  }
+
+  .hero p {
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-tags {
+    justify-content: center;
+  }
+
+  .impact h2,
+  .features h2,
+  .how-it-works h2 {
+    font-size: 2.2rem;
+  }
+
+  .step {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .feature-card {
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .navbar {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .start-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .hero-tags span {
+    width: 100%;
+    text-align: center;
+  }
+
+  .impact,
+  .features,
+  .how-it-works,
+  .footer {
+    padding: 60px 20px;
+  }
+}
 .start-btn {
   margin-top: 30px;
 
