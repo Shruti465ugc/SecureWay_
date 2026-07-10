@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import BottomNav from "../components/BottomNav";
-import MapComponent from "../components/MapComponent";
-import PageHeader from "../components/PageHeader";
+import BottomNav from "./BottomNav";
+import MapComponent from "./MapComponent";
+import PageHeader from "./PageHeader";
 import "../styles/Map.css";
 
 function Map() {

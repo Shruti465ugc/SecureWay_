@@ -1,5 +1,5 @@
-import BottomNav from "../components/BottomNav";
-import PageHeader from "../components/PageHeader";
+import BottomNav from "./BottomNav";
+import PageHeader from "./PageHeader";
 import "../styles/Profile.css";
 import { Link } from "react-router-dom";
 

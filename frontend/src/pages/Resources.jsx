@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import BottomNav from "../components/BottomNav";
-import PageHeader from "../components/PageHeader";
+import BottomNav from "./BottomNav";
+import PageHeader from "./PageHeader";
+import { useNavigate } from "react-router-dom";
 import "../styles/Resources.css";
 
 import {
@@ -20,7 +21,7 @@ function Resources() {
   //  NEW STATES (backend integration)
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
   const [loadingNearby, setLoadingNearby] = useState(false);
-
+  const navigate = useNavigate();
 
   const emergencyContacts = [
     {
@@ -336,9 +337,13 @@ function Resources() {
             emergencies and disasters.
           </p>
 
-          <button className="volunteer-btn">
-            Register as Volunteer
+          <button
+            className="volunteer-btn"
+            onClick={() => navigate("/volunteer")}
+          >
+            Become a Volunteer
           </button>
+        
         </div>
       </section>
 

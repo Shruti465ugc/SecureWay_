@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
 .landing {
   min-height: 100vh;
   background: linear-gradient(180deg, #081321 0%, #0d1b2a 100%);
@@ -58,14 +68,6 @@
   margin-top:30px;
 }
 
-.secondary-btn{
-  padding:15px 35px;
-  border-radius:10px;
-  border:2px solid white;
-  background:transparent;
-  color:white;
-  font-weight:bold;
-}
 
 .hero-tags{
   display:flex;
@@ -115,8 +117,6 @@
 }
 
 .hero h1 {
-  position: relative;
-  z-index: 1;
   font-size:clamp(2.2rem,6vw,4rem);
   font-weight: 800;
   max-width: 850px;
@@ -125,8 +125,6 @@
 }
 
 .hero p {
-  position: relative;
-  z-index: 1;
   max-width: 650px;
   font-size:clamp(1rem,2vw,1.2rem);
   line-height: 1.8;
@@ -307,8 +305,6 @@
 
   transition: 0.3s;
 
-  outline-style: double;
-
   cursor: pointer;
 
   
@@ -350,7 +346,7 @@
 .impact-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 15px 30px rgba(37, 99, 235, 0.18);
-  border: #009fd8;
+  border: 1px solid #009fd8;
 }
 
 .impact-card h3 {

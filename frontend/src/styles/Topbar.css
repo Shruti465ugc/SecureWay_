@@ -1,0 +1,128 @@
+.topbar{
+    height:85px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#10263f;
+
+    border-radius:18px;
+
+    padding:0 30px;
+
+    margin-bottom:30px;
+}
+
+.topbar-left h1{
+
+    font-size:30px;
+
+    color:white;
+}
+
+.topbar-left p{
+
+    color:#9fb4ce;
+
+    margin-top:6px;
+
+    font-size:14px;
+}
+
+.topbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+}
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:#081321;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    width:320px;
+}
+
+.search-box input{
+
+    width:100%;
+
+    background:transparent;
+
+    border:none;
+
+    outline:none;
+
+    color:white;
+
+    font-size:15px;
+}
+
+.search-box input::placeholder{
+
+    color:#8da3bf;
+}
+
+.notification{
+
+    position:relative;
+
+    cursor:pointer;
+}
+
+.notification-dot{
+
+    position:absolute;
+
+    top:-2px;
+
+    right:-2px;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#ef4444;
+}
+
+.admin-profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+}
+
+.admin-profile h4{
+
+    color:white;
+
+    margin:0;
+}
+
+.admin-profile span{
+
+    color:#9fb4ce;
+
+    font-size:13px;
+}

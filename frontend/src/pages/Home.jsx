@@ -1,10 +1,10 @@
 import { useState } from "react";
-import BottomNav from "../components/BottomNav";
-import EmergencyServices from "../components/EmergencyServices";
-import SOSButton from "../components/SOSButton";
-import Header from "../components/Header";
-import EmergencyContacts from "../components/EmergencyContacts";
-import NearbyVolunteers from "../components/NearbyVolunteers";
+import BottomNav from "./BottomNav";
+import EmergencyServices from "./EmergencyServices";
+import SOSButton from "./SOSButton";
+import Header from "./Header";
+import EmergencyContacts from "./EmergencyContacts";
+import NearbyVolunteers from "./NearbyVolunteers";
 import "../styles/Home.css";
 
 function Home() {

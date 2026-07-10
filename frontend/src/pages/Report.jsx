@@ -9,8 +9,8 @@ import {
     MapPin,
 } from "lucide-react";
 
-import BottomNav from "../components/BottomNav";
-import PageHeader from "../components/PageHeader";
+import BottomNav from "./BottomNav";
+import PageHeader from "./PageHeader";
 import "../styles/Report.css";
 
 function Report() {

@@ -37,6 +37,36 @@
       "available": false
     }
   ],
+  "volunteerApplications": [
+    {
+      "id": 1,
+      "name": "Yogita Sharma",
+      "email": "baanisharma09@gmail.com",
+      "phone": "7814700599",
+      "city": "PATHANKOT",
+      "age": "18",
+      "skills": "first AID",
+      "availability": "Both",
+      "experience": "Yes",
+      "reason": "to help",
+      "status": "Pending",
+      "createdAt": "2026-07-10T08:20:25.057Z"
+    },
+    {
+      "id": 2,
+      "name": "Yogita Sharma",
+      "email": "baanisharma09@gmail.com",
+      "phone": "7814700599",
+      "city": "PATHANKOT",
+      "age": "18",
+      "skills": "first AID",
+      "availability": "Both",
+      "experience": "Yes",
+      "reason": "to help",
+      "status": "Pending",
+      "createdAt": "2026-07-10T08:29:55.399Z"
+    }
+  ],
   "reports": [
     {
       "id": 1,
@@ -65,5 +95,6 @@
     }
   ],
   "nextReportId": 2,
-  "nextSosId": 2
+  "nextSosId": 2,
+  "nextVolunteerApplicationId": 3
 }

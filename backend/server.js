@@ -14,12 +14,17 @@ const reportsRoute = require('./routes/reports')
 const volunteersRoute = require('./routes/volunteers')
 const sosRoute = require('./routes/sos')
 const servicesRoute = require('./routes/services')
+const adminRoute = require("./routes/admin");
+const volunteerApplicationsRoute = require("./routes/volunteerApplications");
 
 app.use('/api/reports', reportsRoute)
 app.use('/api/volunteers', volunteersRoute)
 app.use('/api/sos', sosRoute)
 app.use('/api/services', servicesRoute)
 app.use(express.static(path.join(_dirname, '/frontend/dist')))
+app.use("/api/admin", adminRoute);
+app.use("/api/volunteer-applications", volunteerApplicationsRoute);
+
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(_dirname, "frontend" , "dist" , "index.html"))
 });

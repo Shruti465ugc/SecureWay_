@@ -1,0 +1,168 @@
+/* Full Page */
+
+.volunteer-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #081321 0%, #0d1b2a 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+/* Form Card */
+
+.volunteer-container {
+  width: 100%;
+  max-width: 750px;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  border-radius: 18px;
+
+  padding: 40px;
+
+  color: white;
+
+  box-shadow: 0 15px 40px rgba(0,0,0,.35);
+}
+
+/* Heading */
+
+.volunteer-container h1{
+    text-align:center;
+    margin-bottom:10px;
+    font-size:2rem;
+}
+
+.subtitle{
+    text-align:center;
+    color:#b8c6d9;
+    margin-bottom:35px;
+    line-height:1.6;
+}
+
+/* Form */
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* Input Group */
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.input-group label{
+    margin-bottom:8px;
+    font-weight:600;
+    color:#d9e7ff;
+}
+
+/* Inputs */
+
+.input-group input,
+.input-group select,
+.input-group textarea{
+
+    background:#12253a;
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    padding:14px 16px;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+/* Placeholder */
+
+.input-group input::placeholder,
+.input-group textarea::placeholder{
+    color:#8da3bf;
+}
+
+/* Focus */
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus{
+
+    border-color:#4da3ff;
+
+    box-shadow:0 0 0 3px rgba(77,163,255,.15);
+}
+
+/* Textarea */
+
+textarea{
+    resize:vertical;
+    min-height:120px;
+}
+
+/* Button */
+
+.submit-btn{
+
+    margin-top:10px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.submit-btn:hover{
+
+    background:#3b82f6;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.volunteer-container{
+
+    padding:25px;
+}
+
+.volunteer-container h1{
+
+    font-size:1.6rem;
+}
+
+.subtitle{
+
+    font-size:.95rem;
+}
+}

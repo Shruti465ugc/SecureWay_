@@ -10,6 +10,7 @@ import Report from "./pages/Report";
 import Resources from "./pages/Resources";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
+import VolunteerForm from "./pages/VolunteerForm";
 
 function App() {
   const [user, setUser] = useState({
@@ -27,6 +28,7 @@ function App() {
         <Route path="/report" element={<Report />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/profile" element={<Profile user={user} />} />
+        <Route path="/volunteer" element={<VolunteerForm />} />
         <Route path="/edit-profile" element={<EditProfile user={user} setUser={setUser} />} />
       </Routes>
     </BrowserRouter>
