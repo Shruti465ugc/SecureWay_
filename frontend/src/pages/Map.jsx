@@ -52,10 +52,10 @@ function Map() {
           }
 
           setServices(data);
-           console.log("Services:", data);
+          console.log("Services:", data);
           try {
             const volunteerRes = await fetch(
-              `https://safepath-hackhazard-project.onrender.com/api/volunteers/nearby?lat=${lat}&lon=${lon}&radius=5`
+              `https://safepath-hackhazard-project.onrender.com/api/volunteers/verified`
             );
 
             const volunteerData = await volunteerRes.json();
@@ -139,48 +139,57 @@ function Map() {
         <p>{location}</p>
         <span>🟢 GPS Active</span>
       </section>
-   <div className="map-legend">
-  <button className="legend_btn" onClick={() => setSelectedTarget("user")}>
-    🟢 You
-  </button>
+      <div className="map-legend">
+        <button className="legend_btn" onClick={() => setSelectedTarget("user")}>
+          🟢 You
+        </button>
 
-  <button className="legend_btn" onClick={() => setSelectedTarget("police")}>
-    🚓 Police
-  </button>
+        <button className="legend_btn" onClick={() => setSelectedTarget("police")}>
+          🚓 Police
+        </button>
 
-  <button className="legend_btn" onClick={() => setSelectedTarget("hospital")}>
-    🏥 Hospital
-  </button>
+        <button className="legend_btn" onClick={() => setSelectedTarget("hospital")}>
+          🏥 Hospital
+        </button>
 
-  <button className="legend_btn" onClick={() => setSelectedTarget("fire_station")}>
-    🚒 Fire
-  </button>
+        <button className="legend_btn" onClick={() => setSelectedTarget("fire_station")}>
+          🚒 Fire
+        </button>
 
-  <button className="legend_btn" onClick={() => setSelectedTarget("pharmacy")}>
-    💊 Pharmacy
-  </button>
-</div>
+        <button className="legend_btn" onClick={() => setSelectedTarget("pharmacy")}>
+          💊 Pharmacy
+        </button>
 
-    
+        <button
+          className="legend_btn"
+          onClick={() => setSelectedTarget("volunteer")}
+        >
+
+          🤝 Volunteers
+
+        </button>
+      </div>
+
+
 
       <section className="map-container">
-  <MapComponent
-  userLocation={userLocation}
-  services={services}
-  volunteers={volunteers}
-  reports={reports}
-  selectedTarget={selectedTarget}
-/>
+        <MapComponent
+          userLocation={userLocation}
+          services={services}
+          volunteers={volunteers}
+          reports={reports}
+          selectedTarget={selectedTarget}
+        />
       </section>
 
-        <section>
+      <section>
         <div className="stats-bar">
           <div>🚨 {reports.length} Incidents</div>
           <div>⚠ {highIncidents} High Risk</div>
           <div>🤝 {volunteers.length} Volunteers</div>
           <div>🏥 {services.length} Services</div>
         </div>
-   </section >
+      </section >
 
       <section className="services-section">
         <h2>Nearby Services</h2>
@@ -222,7 +231,7 @@ function Map() {
 
       <BottomNav />
     </div >
-  
+
   );
 }
 

@@ -74,6 +74,7 @@ function FlyToLocation({
   selectedTarget,
   userLocation,
   services,
+  volunteers,
 }) {
   const map = useMap();
 
@@ -95,23 +96,42 @@ function FlyToLocation({
       return;
     }
 
-    const service = services.find(
-      (s) => s.type === selectedTarget
+   
+if (
+    selectedTarget === "volunteer" &&
+    volunteers.length > 0
+) {
+    map.flyTo(
+        [
+            volunteers[0].latitude,
+            volunteers[0].longitude,
+        ],
+        16,
+        {
+            duration: 1.5,
+        }
     );
 
-    if (service) {
-      map.flyTo(
-        [service.lat, service.lon],
-        17,
-        {
-          duration: 1.5,
-        }
-      );
+    return;
+}
+const service = services.find(
+  (s) => s.type === selectedTarget
+);
+
+if (service) {
+  map.flyTo(
+    [service.lat, service.lon],
+    17,
+    {
+      duration: 1.5,
     }
+  );
+}
   }, [
     selectedTarget,
     userLocation,
     services,
+     volunteers,
     map,
   ]);
 
@@ -147,6 +167,7 @@ function MapComponent({
   selectedTarget={selectedTarget}
   userLocation={userLocation}
   services={services}
+  volunteers={volunteers}
 />
 
       <TileLayer
@@ -205,44 +226,71 @@ function MapComponent({
       ))}
 
       {/* Volunteers */}
-      {volunteers.map((volunteer) => (
-       <Marker
-  key={`volunteer-${volunteer.id}`}
-  position={[
-    volunteer.lat,
-    volunteer.lon,
-  ]}
-  icon={volunteerIcon}
+  {volunteers.map((volunteer) => (
+
+<Marker
+    key={volunteer._id}
+    position={[
+        volunteer.latitude,
+        volunteer.longitude,
+    ]}
+    icon={volunteerIcon}
 >
-          <Popup>
-            <div>
-              <h3>🤝 {volunteer.name}</h3>
 
-              <p>
-                <strong>Skill:</strong>{" "}
-                {volunteer.skill}
-              </p>
+<Popup>
 
-              <p>
-                <strong>Distance:</strong>{" "}
-                {volunteer.distanceKm} km
-              </p>
+<h3>🤝 Verified Volunteer</h3>
 
-              <p>
-                <strong>Phone:</strong>{" "}
-                {volunteer.phone}
-              </p>
-            </div>
-          </Popup>
-        </Marker>
-      ))}
+<p>
+
+<b>Name :</b>
+
+{volunteer.user?.name}
+
+</p>
+
+<p>
+
+<b>Phone :</b>
+
+{volunteer.phone}
+
+</p>
+
+<p>
+
+<b>Skill :</b>
+
+{volunteer.skill}
+
+</p>
+
+<p>
+
+<b>Completed Rescues :</b>
+
+{volunteer.totalRescues}
+
+</p>
+
+<p style={{color:"green"}}>
+
+🟢 Available
+
+</p>
+
+</Popup>
+
+</Marker>
+
+))}
     {/* Incident Reports */}
 {reports.map((report, index) => {
   if (!report.location) return null;
 
-  const [lat, lon] = report.location
-    .split(",")
-    .map((coord) => Number(coord.trim()));
+ const lat = report.location.latitude;
+const lon = report.location.longitude;
+    
 
   return (
    <Marker
@@ -267,12 +315,45 @@ function MapComponent({
 })}
 
 {/* Hazard Circles */}
-{reports.map((report, index) => {
-  if (!report.location) return null;
+{reports.map((report) => {
 
-  const [lat, lon] = report.location
-    .split(",")
-    .map((coord) => Number(coord.trim()));
+  const lat = report.location?.latitude;
+  const lon = report.location?.longitude;
+
+  if (lat == null || lon == null) return null;
+
+  return (
+    <Marker
+      key={report._id}
+      position={[lat, lon]}
+      icon={incidentIcon}
+    >
+      <Popup>
+
+        <h3>🚨 {report.incidentType}</h3>
+
+        <p>
+          <b>Severity:</b> {report.severity}
+        </p>
+
+        <p>
+          <b>Status:</b> {report.status}
+        </p>
+
+        <p>{report.description}</p>
+
+      </Popup>
+    </Marker>
+  );
+
+})}
+  
+  {reports.map((report) => {
+
+  const lat = report.location?.latitude;
+  const lon = report.location?.longitude;
+
+  if (lat == null || lon == null) return null;
 
   let radius = 100;
 
@@ -283,8 +364,9 @@ function MapComponent({
     radius = 500;
 
   return (
+
     <Circle
-      key={`hazard-${index}`}
+      key={report._id + "-circle"}
       center={[lat, lon]}
       radius={radius}
       pathOptions={{
@@ -294,10 +376,13 @@ function MapComponent({
             : report.severity === "Medium"
             ? "orange"
             : "yellow",
-        fillOpacity: 0.2,
+
+        fillOpacity: 0.25,
       }}
     />
+
   );
+
 })}
   
     </MapContainer>

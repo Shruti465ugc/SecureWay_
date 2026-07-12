@@ -1,0 +1,43 @@
+.volunteer-table{
+    margin-top:30px;
+    background:#1f2937;
+    padding:20px;
+    border-radius:12px;
+}
+
+.volunteer-table h2{
+    color:white;
+    margin-bottom:20px;
+}
+
+.volunteer-table table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.volunteer-table th,
+.volunteer-table td{
+    padding:15px;
+    border-bottom:1px solid #374151;
+    color:white;
+    text-align:left;
+}
+
+.approve-btn{
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+.reject-btn{
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:6px;
+    cursor:pointer;
+}

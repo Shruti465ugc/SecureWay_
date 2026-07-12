@@ -1,10 +1,58 @@
 import { useState, useRef } from "react";
+import { useEffect } from "react";
 import "../styles/SOSButton.css";
 
 function SOSButton({ selectedEmergency }) {
+  const [sosId, setSosId] = useState(null);
   const [activated, setActivated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [countdown, setCountdown] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [accepted, setAccepted] = useState(false);
+  const [volunteerInfo, setVolunteerInfo] = useState(null);
+  useEffect(() => {
+
+    if (!sosId) return;
+
+    const interval = setInterval(async () => {
+
+      try {
+
+        const res = await fetch(
+          `https://safepath-hackhazard-project.onrender.com/api/sos/status/${sosId}`
+        );
+
+        const data = await res.json();
+
+        if (res.ok) {
+
+          setStatus(data.status);
+
+          if (data.volunteer) {
+
+            setVolunteerInfo(data.volunteer);
+
+          }
+
+          if (data.status === "Accepted") {
+
+            setAccepted(true);
+
+          }
+
+        }
+
+      } catch (err) {
+
+        console.log(err);
+
+      }
+
+    }, 5000);
+
+    return () => clearInterval(interval);
+
+  }, [sosId]);
   const [steps, setSteps] = useState([
     { text: "📍 Sharing Live Location...", done: false },
     { text: "📞 Notifying Emergency Contacts...", done: false },
@@ -14,8 +62,11 @@ function SOSButton({ selectedEmergency }) {
 
   const timerRef = useRef(null);
   const intervalRef = useRef(null);
-
   const API_URL = "https://safepath-hackhazard-project.onrender.com/api/sos";
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log("Logged In User:", user);
+  console.log("USER FROM LOCAL STORAGE");
+console.log(user);
 
   const startHold = () => {
     if (!selectedEmergency) return;
@@ -58,19 +109,39 @@ function SOSButton({ selectedEmergency }) {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
 
-          const res = await fetch(API_URL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              lat,
-              lon,
-              userName: "User",
-            }),
-          });
+         const payload = {
+  userId: user.id,
+  latitude: lat,
+  longitude: lon,
+  userName: user.name,
+};
+
+console.log("PAYLOAD:", payload);
+
+const res = await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(payload),
+});
 
           const data = await res.json();
+
+          console.log("Response Status:", res.status);
+          console.log("Backend Response:", data);
+
+          if (!res.ok) {
+            alert(JSON.stringify(data));
+            setLoading(false);
+            return;
+          }
+
+          setSosId(data.sos._id);
+
+          alert(
+            `SOS Sent Successfully!\nNearby Volunteers Found: ${data.nearbyVolunteers.length}`
+          );
           console.log("SOS Response:", data);
 
           // Animate steps
@@ -168,6 +239,15 @@ function SOSButton({ selectedEmergency }) {
             <p>✅ Live Location Shared</p>
             <p>✅ Emergency Contacts Notified</p>
             <p>✅ Nearby Volunteers Alerted</p>
+            {accepted ? (
+              <h3 style={{ color: "limegreen" }}>
+                🚑 Volunteer is on the way!
+              </h3>
+            ) : (
+              <h3 style={{ color: "orange" }}>
+                ⏳ Waiting for a volunteer...
+              </h3>
+            )}
             <p>✅ Authorities Contacted</p>
 
             <p>⏱ Estimated Response: 3 mins</p>
@@ -176,6 +256,9 @@ function SOSButton({ selectedEmergency }) {
               className="close-btn"
               onClick={() => {
                 setActivated(false);
+                setAccepted(false);
+                setSosId(null);
+
                 setSteps([
                   { text: "📍 Sharing Live Location...", done: false },
                   { text: "📞 Notifying Emergency Contacts...", done: false },

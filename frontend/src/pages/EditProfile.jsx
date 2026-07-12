@@ -1,12 +1,22 @@
 import { useState } from "react";
 import "../styles/EditProfile.css";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
-function EditProfile({ user, setUser }) {
-  const [formData, setFormData] = useState(user);
+function EditProfile() {
   const navigate = useNavigate();
+
+  const loggedInUser = JSON.parse(localStorage.getItem("user"));
+
+  const [formData, setFormData] = useState({
+    name: loggedInUser.name || "",
+    email: loggedInUser.email || "",
+    phone: loggedInUser.phone || "",
+    emergencyContact: loggedInUser.emergencyContact || "",
+    address: loggedInUser.address || "",
+    bloodGroup: loggedInUser.bloodGroup || "",
+    gender: loggedInUser.gender || "",
+    age: loggedInUser.age || "",
+  });
 
   const handleChange = (e) => {
     setFormData({
@@ -15,31 +25,61 @@ function EditProfile({ user, setUser }) {
     });
   };
 
-  const handleSubmit = (e) => {
-    setUser(formData);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/profile");
-    console.log(formData);
 
-    // API call here
+    try {
+      const response = await fetch(
+        `https://safepath-hackhazard-project.onrender.com/api/user/${loggedInUser.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const updatedUser = await response.json();
+
+      if (!response.ok) {
+        alert(updatedUser.message);
+        return;
+      }
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify(updatedUser)
+      );
+
+      alert("Profile Updated Successfully!");
+
+      navigate("/profile");
+
+    } catch (err) {
+      console.log(err);
+      alert("Server Error");
+    }
   };
 
   return (
     <div className="edit-profile-container">
+
       <h1>Edit Profile</h1>
 
       <form
         className="edit-profile-card"
         onSubmit={handleSubmit}
       >
+
         <div className="profile-avatar">
           👤
         </div>
 
         <div className="input-group">
           <label>Full Name</label>
+
           <input
-            type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -47,9 +87,19 @@ function EditProfile({ user, setUser }) {
         </div>
 
         <div className="input-group">
-          <label>Phone Number</label>
+          <label>Email</label>
+
           <input
-            type="text"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Phone</label>
+
+          <input
             name="phone"
             value={formData.phone}
             onChange={handleChange}
@@ -58,8 +108,8 @@ function EditProfile({ user, setUser }) {
 
         <div className="input-group">
           <label>Emergency Contact</label>
+
           <input
-            type="text"
             name="emergencyContact"
             value={formData.emergencyContact}
             onChange={handleChange}
@@ -67,23 +117,70 @@ function EditProfile({ user, setUser }) {
         </div>
 
         <div className="input-group">
-          <label>Email Address</label>
+          <label>Address</label>
+
           <input
-            type="email"
-            name="email"
-            value={formData.email}
+            name="address"
+            value={formData.address}
             onChange={handleChange}
           />
         </div>
 
-          <button
-            type="submit"
-            className="save-btn"
-            
+        <div className="input-group">
+          <label>Blood Group</label>
+
+          <select
+            name="bloodGroup"
+            value={formData.bloodGroup}
+            onChange={handleChange}
           >
-            Save Changes
-          </button>
+            <option value="">Select</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+          </select>
+        </div>
+
+        <div className="input-group">
+          <label>Gender</label>
+
+          <select
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+          >
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div className="input-group">
+          <label>Age</label>
+
+          <input
+            type="number"
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="save-btn"
+        >
+          Save Changes
+        </button>
+
       </form>
+
     </div>
   );
 }

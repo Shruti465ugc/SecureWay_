@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import AdminSidebar from "../components/AdminSidebar";
 import AdminTopbar from "../components/AdminTopbar";
 import StatsCard from "../components/StatsCard";
+import VolunteerTable from "../components/VolunteerTable";
+import VolunteerApplicationsTable from "../components/VolunteerApplicationsTable";
+import { useNavigate } from "react-router-dom";
 
 import {
   Users,
@@ -16,10 +19,26 @@ import "../styles/StatsCard.css";
 
 function Admin() {
 
+  const navigate=useNavigate();
+
+useEffect(()=>{
+
+const admin=JSON.parse(
+localStorage.getItem("admin")
+);
+
+if(!admin){
+
+navigate("/admin-login");
+
+}
+
+},[]);
+
   const [dashboardData, setDashboardData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/dashboard")
+    fetch("https://safepath-hackhazard-project.onrender.com/api/admin/dashboard")
       .then((res) => res.json())
       .then((data) => setDashboardData(data))
       .catch((err) => console.error(err));
@@ -77,6 +96,8 @@ function Admin() {
           />
 
         </div>
+        <VolunteerTable />
+        <VolunteerApplicationsTable />
 
       </main>
 

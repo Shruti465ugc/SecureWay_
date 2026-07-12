@@ -1,96 +1,151 @@
-const express = require('express')
-const router = express.Router()
-const { readDB, writeDB } = require('../db')
+const express = require("express");
+const router = express.Router();
 
-router.get('/', (req, res) => {
-  const db = readDB()
-  res.json(db.reports.reverse())
-})
+const Report = require("../models/Report");
 
-router.get('/stats', (req, res) => {
-  const db = readDB()
+router.get("/", async (req, res) => {
+  try {
 
-  let stats = {
-    Accident: 0,
-    Fire: 0,
-    'Medical Emergency': 0,
-    Crime: 0,
-    Flood: 0,
-    Other: 0
-  }
+    const reports = await Report.find()
+      .sort({ createdAt: -1 });
 
-  for (let i = 0; i < db.reports.length; i++) {
-    const type = db.reports[i].incidentType
-    if (stats[type] != undefined) {
-      stats[type] = stats[type] + 1
-    }
-  }
+    res.json(reports);
 
-  res.json(stats)
-})
+  } catch (err) {
 
-router.post('/', (req, res) => {
-  const body = req.body
+    console.log(err);
 
-  if (!body.incidentType) {
-    return res.status(400).json({ error: 'incidentType is required' })
-  }
-
-  const db = readDB()
-
-  const newReport = {
-    id: db.nextReportId,
-    code: 'SR-' + (1000 + db.nextReportId),
-    incidentType: body.incidentType,
-    description: body.description || '',
-    location: body.location || null,
-    severity: body.severity || 'Medium',
-    anonymous: body.anonymous ? true : false,
-   status: 'Pending',
-    createdAt: new Date().toISOString()
-  }
-
-  db.reports.push(newReport)
-  db.nextReportId = db.nextReportId + 1
-
-  writeDB(db)
-
-  console.log('new report submitted:', newReport.code)
-
-  res.status(201).json(newReport)
-})
-router.patch('/:id/status', (req, res) => {
-  const { status } = req.body;
-
-  const allowedStatuses = [
-    'Pending',
-    'In Progress',
-    'Resolved'
-  ];
-
-  if (!allowedStatuses.includes(status)) {
-    return res.status(400).json({
-      error: 'Invalid status'
+    res.status(500).json({
+      message: "Server Error",
     });
+
   }
-
-  const db = readDB();
-
-  const report = db.reports.find(
-    r => r.id === Number(req.params.id)
-  );
-
-  if (!report) {
-    return res.status(404).json({
-      error: 'Report not found'
-    });
-  }
-
-  report.status = status;
-
-  writeDB(db);
-
-  res.json(report);
 });
 
-module.exports = router
+// Stats
+
+router.get("/stats", async (req, res) => {
+
+  try {
+
+    const reports = await Report.find();
+
+    const stats = {
+      Accident: 0,
+      Fire: 0,
+      "Medical Emergency": 0,
+      Crime: 0,
+      Flood: 0,
+      Other: 0,
+    };
+
+    reports.forEach((report) => {
+
+      if (stats[report.incidentType] !== undefined) {
+
+        stats[report.incidentType]++;
+
+      }
+
+    });
+
+    res.json(stats);
+
+  } catch (err) {
+
+    console.log(err);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+
+  }
+
+});
+
+// Create Report
+
+router.post("/", async (req, res) => {
+
+  try {
+
+   const {
+ userId,
+  incidentType,
+  description,
+  location,
+  severity,
+  anonymous,
+} = req.body;
+
+    const count =
+      await Report.countDocuments();
+
+    const report = await Report.create({
+
+  user: userId || null,
+
+  incidentType,
+
+  description,
+
+  location,
+
+  severity,
+
+  anonymous,
+
+  code: "SR-" + (1001 + count),
+
+});
+
+    res.status(201).json(report);
+
+  } catch (err) {
+
+    console.log(err);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+
+  }
+
+});
+
+// Update Status
+
+router.patch("/:id/status", async (req, res) => {
+
+  try {
+
+    const report =
+      await Report.findByIdAndUpdate(
+
+        req.params.id,
+
+        {
+          status: req.body.status,
+        },
+
+        {
+          new: true,
+        }
+
+      );
+
+    res.json(report);
+
+  } catch (err) {
+
+    console.log(err);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+
+  }
+
+});
+
+module.exports = router;

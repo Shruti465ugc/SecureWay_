@@ -1,104 +1,131 @@
 const express = require("express");
 const router = express.Router();
 
-const fs = require("fs");
-const path = require("path");
+const VolunteerApplication = require("../models/VolunteerApplication");
+const Volunteer = require("../models/Volunteer");
 
-const dbPath = path.join(__dirname, "../data/db.json");
 
-function readDB() {
-  return JSON.parse(fs.readFileSync(dbPath, "utf8"));
-}
 
-function writeDB(data) {
-  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
-}
 
 // POST application
-router.post("/", (req, res) => {
-  const db = readDB();
+router.post("/", async (req, res) => {
+  try {
+   const {
+  user,
+  phone,
+  city,
+  age,
+  skills,
+  availability,
+  experience,
+  reason,
+  latitude,
+  longitude,
+} = req.body;
 
-  if (!db.volunteerApplications) {
-    db.volunteerApplications = [];
+    const existing = await VolunteerApplication.findOne({ user });
+
+    if (existing) {
+      return res.status(400).json({
+        message: "You have already submitted an application.",
+      });
+    }
+
+    const application = await VolunteerApplication.create({
+      user,
+      phone,
+      city,
+      age,
+      skills,
+      availability,
+      experience,
+      reason,
+       latitude,
+    longitude,
+    });
+
+    res.status(201).json(application);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: "Server Error",
+    });
   }
-
-  if (!db.nextVolunteerApplicationId) {
-    db.nextVolunteerApplicationId = 1;
-  }
-
-  const application = {
-    id: db.nextVolunteerApplicationId++,
-    ...req.body,
-    status: "Pending",
-    createdAt: new Date().toISOString(),
-  };
-
-  db.volunteerApplications.push(application);
-
-  writeDB(db);
-
-  res.status(201).json(application);
 });
 
 // GET applications
-router.get("/", (req, res) => {
-  const db = readDB();
-  res.json(db.volunteerApplications || []);
+router.get("/", async (req, res) => {
+  try {
+    const applications = await VolunteerApplication.find()
+      .populate("user", "name email")
+      .sort({ createdAt: -1 });
+
+    res.json(applications);
+
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
 });
-router.post("/:id/approve", (req, res) => {
-
-    const db = readDB();
-
-    const id = Number(req.params.id);
-
-    const application = db.volunteerApplications.find(
-        app => app.id === id
-    );
+router.post("/:id/approve", async (req, res) => {
+  try {
+    const application = await VolunteerApplication.findById(req.params.id)
+      .populate("user");
 
     if (!application) {
-        return res.status(404).json({
-            message: "Application not found"
-        });
+      return res.status(404).json({
+        message: "Application not found",
+      });
     }
 
     application.status = "Approved";
+    await application.save();
 
-    const volunteer = {
-        id: db.volunteers.length + 1,
-        name: application.name,
-        skill: application.skills,
+    const alreadyVolunteer = await Volunteer.findOne({
+      user: application.user._id,
+    });
+
+    if (!alreadyVolunteer) {
+      await Volunteer.create({
+        user: application.user._id,
+        name: application.user.name,
         phone: application.phone,
-        lat: 0,
-        lon: 0,
-        available: true
-    };
-
-    db.volunteers.push(volunteer);
-
-    writeDB(db);
+        skill: application.skills,
+      latitude: application.latitude,
+longitude: application.longitude,
+        available: true,
+        verified: true,
+      });
+    }
 
     res.json({
-        message: "Volunteer approved."
+      message: "Volunteer Approved Successfully",
     });
 
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
 });
-router.delete("/:id", (req, res) => {
-
-    const db = readDB();
-
-    const id = Number(req.params.id);
-
-    db.volunteerApplications =
-        db.volunteerApplications.filter(
-            app => app.id !== id
-        );
-
-    writeDB(db);
+router.delete("/:id", async (req, res) => {
+  try {
+    await VolunteerApplication.findByIdAndDelete(req.params.id);
 
     res.json({
-        message: "Application deleted."
+      message: "Application Deleted",
     });
 
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
 });
 
 module.exports = router;

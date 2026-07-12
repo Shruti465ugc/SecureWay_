@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+
 import "../styles/VolunteerForm.css";
 
 function VolunteerForm() {
   const navigate = useNavigate();
-
+  const loggedInUser = JSON.parse(localStorage.getItem("user"));
+if (!loggedInUser) {
+  alert("Please login first.");
+  navigate("/login");
+  return null;
+}
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
     phone: "",
     city: "",
     age: "",
@@ -27,13 +32,28 @@ function VolunteerForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const position = await new Promise((resolve, reject) => {
+  navigator.geolocation.getCurrentPosition(resolve, reject);
+});
+
+const latitude = position.coords.latitude;
+const longitude = position.coords.longitude;
+
     try {
-      const response = await fetch("http://localhost:5000/api/volunteer-applications", {
+      const response = await fetch("https://safepath-hackhazard-project.onrender.com/api/volunteer-applications", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+   body: JSON.stringify({
+    user: loggedInUser.id,
+
+    ...formData,
+
+    latitude,
+
+    longitude,
+})
       });
 
       if (response.ok) {
@@ -60,27 +80,15 @@ function VolunteerForm() {
 
         <form onSubmit={handleSubmit}>
 
-          <div className="input-group">
-            <label>Full Name</label>
-            <input
-              type="text"
-              name="name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
+      <div className="logged-user">
+  <h3>Applicant</h3>
 
-          <div className="input-group">
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
+  <p>
+    <strong>{loggedInUser.name}</strong>
+  </p>
+
+  <p>{loggedInUser.email}</p>
+</div>
 
           <div className="input-group">
             <label>Phone Number</label>

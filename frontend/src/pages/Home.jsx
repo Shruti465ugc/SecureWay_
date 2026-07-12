@@ -5,6 +5,7 @@ import SOSButton from "./SOSButton";
 import Header from "./Header";
 import EmergencyContacts from "./EmergencyContacts";
 import NearbyVolunteers from "./NearbyVolunteers";
+import RescueStatus from "./RescueStatus";
 import "../styles/Home.css";
 
 function Home() {
@@ -26,7 +27,7 @@ function Home() {
       <SOSButton
         selectedEmergency={selectedEmergency}
       />
-<EmergencyContacts />
+<RescueStatus />
 <NearbyVolunteers />
 
 

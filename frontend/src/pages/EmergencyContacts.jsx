@@ -1,35 +1,102 @@
+import { useEffect, useState } from "react";
 import "../styles/EmergencyContacts.css";
+import { useNavigate } from "react-router-dom";
 
 function EmergencyContacts() {
-  const contacts = [
-    {
-      name: "Amit",
-      phone: "+91 98765 43210",
-    },
-    {
-      name: "Sneha",
-      phone: "+91 98765 12345",
-    },
-  ];
+  const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const [assignedVolunteer, setAssignedVolunteer] = useState(null);
+
+  useEffect(() => {
+    if (!user) return;
+
+    const interval = setInterval(() => {
+      loadVolunteer();
+    }, 3000);
+
+    loadVolunteer();
+
+    return () => clearInterval(interval);
+
+  }, []);
+
+  const loadVolunteer = async () => {
+    try {
+      const res = await fetch(
+        `https://safepath-hackhazard-project.onrender.com/api/sos/status/${user.name}`
+      );
+
+      if (!res.ok) return;
+
+      const data = await res.json();
+
+      if (data.status === "Accepted") {
+        setAssignedVolunteer(data.volunteer);
+      }
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (!assignedVolunteer) {
+    return (
+      <div className="contacts-card">
+
+        <h3>🚑 Volunteer Assignment</h3>
+
+        <div className="waiting-box">
+
+          <h2>⏳ Waiting...</h2>
+
+          <p>
+            Searching for the nearest available volunteer.
+          </p>
+
+        </div>
+
+      </div>
+    );
+  }
 
   return (
     <div className="contacts-card">
-      <h3>👨‍👩‍👧 Trusted Contacts</h3>
 
-      {contacts.map((contact, index) => (
-        <div className="contact-row" key={index}>
-          <div>
-            <strong>{contact.name}</strong>
-            <p>{contact.phone}</p>
-          </div>
+      <h3>🚑 Volunteer Assigned</h3>
 
-          <button>📞</button>
-        </div>
-      ))}
+      <div className="volunteer-card">
 
-      <button className="add-contact">
-        + Add Contact
-      </button>
+        <h2>✅ {assignedVolunteer.user.name}</h2>
+
+        <p>
+
+          📞 {assignedVolunteer.phone}
+
+        </p>
+
+        <p>
+
+          🛠 Skill : {assignedVolunteer.skill}
+
+        </p>
+
+        <p>
+
+          ⭐ Rescue Count : {assignedVolunteer.totalRescues}
+
+        </p>
+
+        <button
+          className="track-btn"
+          onClick={() => navigate("/map")}
+        >
+          📍 Track Volunteer
+        </button>
+
+      </div>
+
     </div>
   );
 }

@@ -17,11 +17,12 @@ function Report() {
     const [incidentType, setIncidentType] = useState("");
     const [reportCode, setReportCode] = useState("");
     const [description, setDescription] = useState("");
-    const [location, setLocation] = useState("");
+    const [location, setLocation] = useState(null);
     const [image, setImage] = useState(null);
     const [severity, setSeverity] = useState("Medium");
     const [anonymous, setAnonymous] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const user = JSON.parse(localStorage.getItem("user"));
     const [stats, setStats] = useState({
         Accident: 0,
         Fire: 0,
@@ -104,16 +105,38 @@ function Report() {
     //     setSubmitted(true);
     // };
 
-    const sendReport = async (e) => {
-        e.preventDefault();
+ const sendReport = async (e) => {
 
-        const reportData = {
-            incidentType,
-            description,
-            location,
-            severity,
-            anonymous,
-        };
+    e.preventDefault();
+
+    if (!incidentType) {
+        alert("Please select incident type");
+        return;
+    }
+
+    if (!location) {
+        alert("Please select your location");
+        return;
+    }
+
+    const reportData = {
+        userId: anonymous ? null : user.id,
+
+        incidentType,
+        description,
+
+        location: {
+            latitude: location.lat,
+            longitude: location.lng,
+        },
+
+        severity,
+        anonymous,
+
+        image: image ? image.name : "",
+    };
+
+
 
         try {
             const response = await fetch(
@@ -128,16 +151,18 @@ function Report() {
                 }
             );
 
-            if (!response.ok) {
-                throw new Error(
-                    "Failed to submit report"
-                );
-            }
+          if (!response.ok) {
+    throw new Error("Failed to submit report");
+}
 
-            setSubmitted(true);
+const data = await response.json();
 
-            fetchStats();
-            fetchReports();
+setReportCode(data.code);
+
+setSubmitted(true);
+
+fetchStats();
+fetchReports();
         } catch (error) {
             console.error(
                 "Error submitting report:",
@@ -220,7 +245,7 @@ function Report() {
                         .slice(0, 5)
                         .map((report) => (
                             <div
-                                key={report.id}
+                                key={report._id}
                                 style={{
                                     marginBottom: "10px",
                                     padding: "12px",
@@ -229,10 +254,9 @@ function Report() {
                                     borderRadius: "10px",
                                 }}
                             >
-                                <h4>
-                                    {report.code} -{" "}
-                                    {report.incidentType}
-                                </h4>
+                               <h4>
+    {report.code} - {report.incidentType}
+</h4>
 
                                 <p>
                                     Severity:{" "}
@@ -290,13 +314,10 @@ function Report() {
                             onClick={() => {
                                 navigator.geolocation.getCurrentPosition(
                                     (position) => {
-                                        setLocation(
-                                            `${position.coords.latitude.toFixed(
-                                                6
-                                            )}, ${position.coords.longitude.toFixed(
-                                                6
-                                            )}`
-                                        );
+                                        setLocation({
+                                            lat: position.coords.latitude,
+                                            lng: position.coords.longitude,
+                                        });
                                     }
                                 );
                             }}
@@ -309,7 +330,10 @@ function Report() {
                             <div className="location-preview">
                                 <MapPin size={18} />
 
-                                <span>{location}</span>
+                                <span>
+                                    {location.lat.toFixed(6)},
+                                    {location.lng.toFixed(6)}
+                                </span>
                             </div>
                         )}
                     </div>
@@ -474,10 +498,7 @@ function Report() {
                                 <span>Report ID</span>
 
                                 <strong>
-                                    SR-
-                                    {Math.floor(
-                                        1000 + Math.random() * 9000
-                                    )}
+                                    {reportCode}
                                 </strong>
                             </div>
 
@@ -500,7 +521,7 @@ function Report() {
 
                                     setIncidentType("");
                                     setDescription("");
-                                    setLocation("");
+                                    setLocation(null);
                                     setImage(null);
                                     setSeverity("Medium");
                                     setAnonymous(false);

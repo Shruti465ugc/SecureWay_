@@ -1,46 +1,178 @@
 const express = require("express");
 const router = express.Router();
 
-const fs = require("fs");
-const path = require("path");
+const User = require("../models/User");
+const Volunteer = require("../models/Volunteer");
+const VolunteerApplication = require("../models/VolunteerApplication");
+const Report = require("../models/Report");
+const SOS = require("../models/SOS");
 
-const dbPath = path.join(__dirname, "../data/db.json");
+// Dashboard Stats
+router.get("/dashboard", async (req, res) => {
+  try {
+    const totalApplications = await VolunteerApplication.countDocuments();
 
-function readDB() {
-  return JSON.parse(fs.readFileSync(dbPath, "utf8"));
+    const pendingApplications =
+      await VolunteerApplication.countDocuments({
+        status: "Pending",
+      });
+
+    const totalVolunteers =
+      await Volunteer.countDocuments();
+
+    const totalReports =
+      await Report.countDocuments();
+
+    const totalSOS =
+      await SOS.countDocuments();
+
+    res.json({
+      totalApplications,
+      pendingApplications,
+      totalVolunteers,
+      totalReports,
+      totalSOS,
+    });
+
+  } catch (err) {
+    console.log(err);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+});
+
+// All Volunteer Applications
+
+router.get("/applications", async (req, res) => {
+
+    try{
+
+        const applications =
+        await VolunteerApplication.find()
+
+        .populate("user")
+
+        .sort({createdAt:-1});
+
+        res.json(applications);
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+        res.status(500).json({
+            message:"Server Error"
+        });
+
+    }
+
+});
+
+// Approve Volunteer
+
+router.put("/approve/:id", async (req,res)=>{
+
+    try{
+
+        const application =
+        await VolunteerApplication.findById(req.params.id);
+
+        if(!application){
+
+            return res.status(404).json({
+                message:"Application not found"
+            });
+
+        }
+
+       application.status = "Approved";
+
+await application.save();
+
+// Check if already a volunteer
+const existingVolunteer = await Volunteer.findOne({
+  user: application.user,
+});
+
+if (existingVolunteer) {
+  return res.status(400).json({
+    message: "Volunteer already approved",
+  });
 }
 
-router.get("/dashboard", (req, res) => {
+await Volunteer.create({
+  user: application.user,
 
-  const db = readDB();
+  phone: application.phone,
 
-  const applications = db.volunteerApplications || [];
+  skill: application.skills || "General Help",
 
-  const volunteers = db.volunteers || [];
+  latitude: application.latitude ?? 0,
 
-  const reports = db.reports || [];
+longitude: application.longitude ?? 0,
 
-  const sos = db.sosAlerts || [];
+  verified: true,
 
-  res.json({
+  available: true,
+});
 
-    totalApplications: applications.length,
+        res.json({
 
-    pendingApplications: applications.filter(
-      a => a.status === "Pending"
-    ).length,
+            message:"Volunteer Approved"
 
-    approvedApplications: applications.filter(
-      a => a.status === "Approved"
-    ).length,
+        });
 
-    totalVolunteers: volunteers.length,
+    }
 
-    totalReports: reports.length,
+    catch(err){
 
-    totalSOS: sos.length
+        console.log(err);
 
-  });
+        res.status(500).json({
+            message:"Server Error"
+        });
+
+    }
+
+});
+
+router.put("/reject/:id", async(req,res)=>{
+
+    try{
+
+        await VolunteerApplication.findByIdAndUpdate(
+
+            req.params.id,
+
+            {
+
+                status:"Rejected"
+
+            }
+
+        );
+
+        res.json({
+
+            message:"Application Rejected"
+
+        });
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+        res.status(500).json({
+            message:"Server Error"
+        });
+
+    }
 
 });
 

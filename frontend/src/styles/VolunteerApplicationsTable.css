@@ -1,0 +1,41 @@
+.applications-section{
+    margin-top:40px;
+}
+
+.applications-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.applications-table th{
+    background:#1E293B;
+    color:white;
+    padding:12px;
+}
+
+.applications-table td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+.applications-table button{
+    margin:4px;
+    padding:8px 15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.applications-table button:first-child{
+    background:#16A34A;
+    color:white;
+}
+
+.applications-table button:last-child{
+    background:#DC2626;
+    color:white;
+}

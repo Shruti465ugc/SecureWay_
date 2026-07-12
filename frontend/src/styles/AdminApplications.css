@@ -1,0 +1,101 @@
+.admin-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #081321 0%, #0d1b2a 100%);
+  padding: 40px;
+  color: white;
+}
+
+.admin-title {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 40px;
+  color: #4fc3f7;
+}
+
+.application-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 25px;
+}
+
+.application-card {
+  background: #102033;
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+}
+
+.application-card:hover {
+  transform: translateY(-6px);
+}
+
+.application-card h2 {
+  color: #4fc3f7;
+  margin-bottom: 18px;
+}
+
+.application-card p {
+  margin: 10px 0;
+  color: #d8d8d8;
+  line-height: 1.5;
+}
+
+.status {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.pending {
+  color: #ffc107;
+}
+
+.approved {
+  color: #22c55e;
+}
+
+.rejected {
+  color: #ef4444;
+}
+
+.btn-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.approve-btn,
+.reject-btn {
+  flex: 1;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  transition: .25s;
+}
+
+.approve-btn {
+  background: #22c55e;
+}
+
+.reject-btn {
+  background: #ef4444;
+}
+
+.approve-btn:hover {
+  background: #16a34a;
+}
+
+.reject-btn:hover {
+  background: #dc2626;
+}
+
+.approve-btn:disabled {
+  background: #64748b;
+  cursor: not-allowed;
+}

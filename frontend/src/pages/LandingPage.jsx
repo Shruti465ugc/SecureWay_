@@ -1,13 +1,29 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/LandingPage.css";
 import heroImage from "../assets/hero-image.jpeg";
 import { MapPin, Menu, X } from "lucide-react";
 
 function LandingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const closeMenu = () => setMenuOpen(false);
+  useEffect(() => {
+  const savedUser = localStorage.getItem("user");
+
+  if (savedUser) {
+    setUser(JSON.parse(savedUser));
+  }
+}, []);
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+
+  setUser(null);
+};
 
   return (
     <div className="landing">
@@ -23,9 +39,42 @@ function LandingPage() {
           <a href="#how-it-works">How It Works</a>
           <a href="#impact">Impact</a>
 
-          <Link to="/dashboard">
-            <button className="nav-btn">Launch App</button>
-          </Link>
+ {user ? (
+  <div className="profile-menu">
+    <button
+      className="profile-btn"
+      onClick={() => setProfileMenuOpen(!profileMenuOpen)}
+    >
+      👤 {user.name} ▼
+    </button>
+
+    {profileMenuOpen && (
+      <div className="dropdown-menu">
+        <Link
+          to="/profile"
+          onClick={() => setProfileMenuOpen(false)}
+        >
+          My Profile
+        </Link>
+
+        <Link
+          to="/dashboard"
+          onClick={() => setProfileMenuOpen(false)}
+        >
+          Dashboard
+        </Link>
+
+        <button onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+    )}
+  </div>
+) : (
+  <Link to="/login">
+    <button className="nav-btn">Sign In</button>
+  </Link>
+)}
         </div>
 
         {/* Mobile Menu Button */}
@@ -74,9 +123,15 @@ function LandingPage() {
         </p>
 
         <div className="hero-buttons">
-          <Link to="/dashboard">
-            <button className="start-btn">Get Started</button>
-          </Link>
+          {user ? (
+  <Link to="/dashboard">
+    <button className="start-btn">Go to Dashboard</button>
+  </Link>
+) : (
+  <Link to="/register">
+    <button className="start-btn">Get Started</button>
+  </Link>
+)}
         </div>
 
         <div className="hero-tags">
