@@ -45,7 +45,8 @@ The platform empowers verified volunteers and administrators to coordinate rescu
 
 # 🏆 HackHazards 2026 Submission
 
- ![Uploading image.png…]()
+<img width="660" height="224" alt="Screenshot 2026-07-13 113447" src="https://github.com/user-attachments/assets/4b9d19ca-77c3-4a4d-8037-89f5aa460bb2" />
+
 
 
 
