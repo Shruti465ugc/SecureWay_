@@ -23,6 +23,10 @@ const handleLogout = () => {
   localStorage.removeItem("user");
 
   setUser(null);
+  setProfileMenuOpen(false);
+  setMenuOpen(false);
+
+  navigate("/");
 };
 
   return (
@@ -87,25 +91,62 @@ const handleLogout = () => {
         </button>
 
         {/* Mobile Menu */}
-        <div className={`mobile-menu ${menuOpen ? "active" : ""}`}>
-          <a href="#features" onClick={closeMenu}>
-            Features
-          </a>
+       <div className={`mobile-menu ${menuOpen ? "active" : ""}`}>
 
-          <a href="#how-it-works" onClick={closeMenu}>
-            How It Works
-          </a>
+  <a href="#features" onClick={closeMenu}>
+    Features
+  </a>
 
-          <a href="#impact" onClick={closeMenu}>
-            Impact
-          </a>
+  <a href="#how-it-works" onClick={closeMenu}>
+    How It Works
+  </a>
 
-          <Link to="/dashboard" onClick={closeMenu}>
-            <button className="nav-btn mobile-launch-btn">
-              Launch App
-            </button>
-          </Link>
-        </div>
+  <a href="#impact" onClick={closeMenu}>
+    Impact
+  </a>
+
+  {user ? (
+    <>
+      <Link to="/dashboard" onClick={closeMenu}>
+        <button className="nav-btn mobile-launch-btn">
+          Dashboard
+        </button>
+      </Link>
+
+      <Link to="/profile" onClick={closeMenu}>
+        <button className="nav-btn mobile-launch-btn">
+          My Profile
+        </button>
+      </Link>
+
+      <button
+        className="nav-btn mobile-launch-btn"
+        onClick={() => {
+          handleLogout();
+          closeMenu();
+          navigate("/");
+        }}
+      >
+        Logout
+      </button>
+    </>
+  ) : (
+    <>
+      <Link to="/login" onClick={closeMenu}>
+        <button className="nav-btn mobile-launch-btn">
+          Sign In
+        </button>
+      </Link>
+
+      <Link to="/register" onClick={closeMenu}>
+        <button className="nav-btn mobile-launch-btn">
+          Register
+        </button>
+      </Link>
+    </>
+  )}
+
+</div>
       </nav>
 
       <section
