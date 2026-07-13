@@ -45,9 +45,9 @@ The platform empowers verified volunteers and administrators to coordinate rescu
 
 # 🏆 HackHazards 2026 Submission
 
-<p align="center">
-  <img src="screenshots/hackhazards-banner.png" alt="HackHazards 2026" width="100%">
-</p>
+ ![Uploading image.png…]()
+
+
 
 ## 🎯 Hackathon Theme
 
