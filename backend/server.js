@@ -4,6 +4,7 @@ require("dotenv").config({
   path: path.join(__dirname, ".env"),
 });
 
+
 const express = require('express')
 const cors = require('cors')
 const connectDB = require("./config/mongo");
