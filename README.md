@@ -1,19 +1,33 @@
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7594acdf-8385-4e38-8255-14dc4cbd6446" />
 
+
+
+<div align="center">
+
+<img width="1536" height="1024" alt="SafePath Banner" src="https://github.com/user-attachments/assets/7594acdf-8385-4e38-8255-14dc4cbd6446" />
 
 # 🛡️ SafePath
 
 ### Smart Emergency Response & Community Safety Platform
 
-SafePath is a full-stack web application that helps users report emergencies, share live locations, discover nearby volunteers, and access emergency services through an interactive map-based interface.
+A modern full-stack MERN application that enables citizens, volunteers, and administrators to collaborate during emergencies through real-time reporting, volunteer management, live location services, and rescue tracking.
 
 **Built for HACKHAZARDS '26**
+
+
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Status](https://img.shields.io/badge/Status-Deployed-success)
 
 </div>
 
 ---
 
-## 🌍 Live Demo
+# 🌐 Live Demo
+
+### 🚀 Production
 
 https://safepath-hackhazard-project.onrender.com
 
@@ -21,116 +35,222 @@ https://safepath-hackhazard-project.onrender.com
 
 # 📖 Overview
 
+SafePath is a community-driven emergency response platform designed to improve public safety by connecting citizens, volunteers, and emergency services on a single platform.
 
+During emergencies, users can instantly report incidents, request help, discover nearby emergency services, and track rescue progress in real time.
 
-SafePath is a full-stack emergency response platform designed to improve public safety through community participation and real-time location awareness.
-
-The platform enables users to quickly report incidents, share their location, discover nearby volunteers, and locate emergency services on an interactive map.
-
-Developed for **HACKHAZARDS '26**, SafePath aligns with the **Infrastructure, Mobility & Smart Systems** theme by using modern web technologies to build a safer and more connected community.
+The platform empowers verified volunteers and administrators to coordinate rescue operations efficiently while providing citizens with a simple and responsive interface.
 
 ---
 
-# 🎯 Problem Statement
+# 🏆 HackHazards 2026 Submission
 
-During emergencies, people often face:
+<img width="660" height="224" alt="Screenshot 2026-07-13 113447" src="https://github.com/user-attachments/assets/4b9d19ca-77c3-4a4d-8037-89f5aa460bb2" />
 
-- Delayed emergency response
-- Difficulty locating nearby help
-- Poor coordination between citizens and volunteers
-- Lack of accessible emergency information
 
-SafePath aims to make emergency assistance faster, more organized, and easier to access.
+
+
+## 🎯 Hackathon Theme
+
+**Infrastructure, Mobility & Smart Systems**
+
+This domain focuses on building software that improves large-scale physical and digital systems, including transportation, emergency response, smart city infrastructure, mobility solutions, IoT-enabled platforms, and real-time monitoring systems.
+
+## 🌟 Theme Alignment
+
+SafePath was developed as a solution under the **Infrastructure, Mobility & Smart Systems** theme.
+
+The platform enhances emergency response by enabling citizens, volunteers, and administrators to coordinate efficiently through a centralized digital platform.
+
+### SafePath contributes to this theme by providing:
+
+- 🚨 Real-time emergency incident reporting
+- 🗺️ Live location and interactive mapping
+- 🚑 Nearby emergency service discovery
+- 👥 Community volunteer coordination
+- 📍 Rescue assignment and tracking
+- 🏥 Smart emergency resource management
+- 📊 Administrative dashboard for emergency monitoring
+- ⚡ Faster communication during critical situations
+
+By integrating mapping technologies, secure authentication, and centralized emergency management, SafePath helps improve coordination between citizens, volunteers, and emergency responders, contributing to safer and smarter communities.
+
+# 🚨 Problem Statement
+
+Emergency response systems often suffer from:
+
+- Slow communication
+- Delayed emergency assistance
+- Lack of nearby volunteer coordination
+- Poor visibility of rescue progress
+- Limited access to emergency resources
+
+These issues increase response time and reduce the effectiveness of emergency management.
 
 ---
 
-# 💡 Solution
+# 💡 Our Solution
 
-SafePath provides a centralized platform where users can:
+SafePath bridges the gap between people in need and responders by providing:
 
-- Report emergency incidents
-- Share live location
-- Find nearby volunteers
-- View nearby emergency services
-- Access important emergency resources
+- Real-time emergency reporting
+- Secure authentication system
+- Community volunteer network
+- Live rescue status tracking
+- Nearby emergency services
+- Interactive maps
+- Centralized admin management
 
-The application combines an intuitive React frontend with an Express.js backend to provide a responsive and scalable emergency response experience.
-
----
-
-# ✨ Features
-
-- 🚨 Emergency Incident Reporting
-- 📍 Live Location Sharing
-- 🗺️ Interactive Map using Leaflet
-- 👥 Nearby Volunteer Discovery
-- 🚑 Nearby Emergency Services
-- 📢 Community-Based Emergency Support
-- ⚡ Responsive User Interface
-- 🌐 Full-Stack Web Application
+The platform ensures faster communication and more organized emergency coordination.
 
 ---
 
-# 🛠️ Tech Stack
+# ✨ Key Features
+
+## 👤 Authentication
+
+- Secure User Registration
+- JWT Authentication
+- Login & Logout
+- Protected Routes
+- Role-based Access Control
+
+---
+
+## 🚨 Emergency Management
+
+- Report Incidents
+- Emergency SOS
+- Incident Categories
+- Live Rescue Tracking
+- Report History
+
+---
+
+## 🗺️ Smart Mapping
+
+- Interactive Leaflet Maps
+- Live User Location
+- Nearby Hospitals
+- Police Stations
+- Fire Stations
+- Pharmacies
+- Volunteers
+
+---
+
+## 👥 Volunteer System
+
+- Volunteer Registration
+- Volunteer Dashboard
+- Application Approval
+- Rescue Assignment
+- Rescue Status Updates
+
+---
+
+## 🛠️ Admin Dashboard
+
+- Admin Login
+- Dashboard Analytics
+- Volunteer Approval
+- Incident Management
+- Rescue Assignment
+- User Management
+
+---
+
+## 📱 User Experience
+
+- Fully Responsive Design
+- Clean UI
+- Fast Navigation
+- Mobile Friendly
+- Modern Dashboard
+
+---
+
+# 🛠 Tech Stack
 
 ## Frontend
 
 - React 19
 - Vite
-- JavaScript
-- CSS
 - React Router DOM
+- Axios
 - React Leaflet
 - Lucide React
+- CSS3
+
+---
 
 ## Backend
 
 - Node.js
 - Express.js
-- REST APIs
-
-## Current Data Storage
-
-- JSON (`data/db.json`)
+- JWT Authentication
+- REST API
 
 ---
 
-# 🏗️ Project Architecture
+## Database
+
+- MongoDB Atlas
+- Mongoose ODM
+
+---
+
+## Deployment
+
+- Render: https://safepath-hackhazard-project.onrender.com/
+- GitHub: https://github.com/Codewith-Yogita/SafePath_HACKHAZARD_PROJECT
+
+---
+
+# 🏗️ System Architecture
 
 ```text
-                 User
-                   │
-                   ▼
-        React + Vite Frontend
-                   │
-            REST API Requests
-                   │
-                   ▼
-        Node.js + Express Backend
-                   │
-             JSON Data Storage
+                    User
+                      │
+                      ▼
+           React + Vite Frontend
+                      │
+              REST API Requests
+                      │
+                      ▼
+            Node.js + Express API
+                      │
+            JWT Authentication
+                      │
+                      ▼
+             MongoDB Atlas Database
 ```
 
 ---
 
-# 📂 Repository Structure
+# 📂 Project Structure
 
 ```text
-SafePath/
+SafePath
 │
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   ├── package.json
+├── backend
+│   ├── config
+│   ├── controllers
+│   ├── middleware
+│   ├── models
+│   ├── routes
+│   ├── utils
+│   ├── data
+│   └── server.js
+│
+├── frontend
+│   ├── public
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── assets
+│   │   └── styles
 │   └── vite.config.js
-│
-├── backend/
-│   ├── data/
-│   ├── routes/
-│   ├── db.js
-│   ├── server.js
-│   ├── utils.js
-│   └── package.json
 │
 ├── README.md
 └── LICENSE
@@ -140,103 +260,227 @@ SafePath/
 
 # 🚀 Getting Started
 
-## Clone the repository
+## Clone Repository
 
 ```bash
-git clone https://github.com/Codewith-Yogita/SafePath_HACKHAZARD_PROJECT
+git clone https://github.com/Codewith-Yogita/SafePath_HACKHAZARD_PROJECT.git
 ```
 
-## Frontend
+---
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+## Install Dependencies
 
-## Backend
+### Backend
 
 ```bash
 cd backend
 npm install
-npm start
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
 ```
 
 ---
 
-# 📸 Screenshots
+## Environment Variables
 
-### 🏠 Home Page
+Create a `.env` file inside the backend folder.
 
-<img width="939" height="437" alt="Screenshot 2026-07-04 165923" src="https://github.com/user-attachments/assets/808c766d-83c4-4a76-a646-be0c54e8fc18" />
+```env
+PORT=5000
 
+MONGODB_URI=Your_MongoDB_Atlas_URI
 
-### 🗺️ Live Map
+JWT_SECRET=Your_JWT_Secret
 
-<img width="934" height="440" alt="Screenshot 2026-07-04 170159" src="https://github.com/user-attachments/assets/85ea8e89-203f-4c52-b21c-25f1f8b1ed53" />
+NODE_ENV=development
+```
 
+---
 
-### 🚨 Emergency Dashboard
+## Run Backend
 
-<img width="942" height="444" alt="Screenshot 2026-07-04 170044" src="https://github.com/user-attachments/assets/baf704c8-6901-44d3-ad28-80998897788d" />
+```bash
+cd backend
+
+npm run dev
+```
+
+---
+
+## Run Frontend
+
+```bash
+cd frontend
+
+npm run dev
+```
+
+---
+
+# 📸 Application Screenshots
+
+## 🏠 Landing Page
+
+<img width="933" height="446" alt="Screenshot 2026-07-13 111441" src="https://github.com/user-attachments/assets/ce64c159-5c55-4897-b691-474081a3cf9c" />
 
 
 ---
 
-# 🔮 Future Enhancements
+## 🔐 Authentication
 
-- Database integration (MongoDB)
-- User authentication
-- AI-powered emergency prediction
-- Real-time notifications
-- Volunteer verification
-- Mobile application
-- Offline emergency support
-- Government emergency service integration
+<img width="956" height="447" alt="Screenshot 2026-07-13 111515" src="https://github.com/user-attachments/assets/97db0937-f7c1-45fc-a919-1abea74ef6d1" />
+
+<img width="954" height="441" alt="Screenshot 2026-07-13 111615" src="https://github.com/user-attachments/assets/10e8eadb-cd29-4249-9ac2-31ac3d2621c5" />
+
 
 ---
 
-# 👥 Team HEXORA
+## 🗺️ Interactive Map
+
+
+<img width="944" height="444" alt="Screenshot 2026-07-13 111715" src="https://github.com/user-attachments/assets/87fe9003-6fca-4fc1-bb20-d02c73ad0a5c" />
+
+
+---
+
+## 🚨 Report Incident
+
+
+<img width="939" height="450" alt="Screenshot 2026-07-13 111748" src="https://github.com/user-attachments/assets/5185dbff-65ef-4a70-8946-71c95329125a" />
+
+
+---
+
+## 👥 Volunteer Dashboard
+
+
+<img width="941" height="451" alt="Screenshot 2026-07-13 111829" src="https://github.com/user-attachments/assets/ed64a362-edcd-4f31-8cc6-69e2b4faa0c3" />
+
+
+---
+
+## 🛠 Admin Dashboard
+
+
+<img width="935" height="441" alt="Screenshot 2026-07-13 111946" src="https://github.com/user-attachments/assets/0130d2fa-bfcd-40cd-a4b2-c4d83c39af90" />
+
+
+---
+
+## 📍 Rescue Status
+
+
+<img width="943" height="404" alt="Screenshot 2026-07-13 112127" src="https://github.com/user-attachments/assets/d3d70c7b-96fa-4cf4-bf89-8d244f1f3df3" />
+
+
+---
+
+# 🔒 Security Features
+
+- JWT Authentication
+- Protected Routes
+- Role-based Authorization
+- Password Hashing (bcrypt)
+- MongoDB Validation
+- Secure REST APIs
+
+---
+
+# 📈 Future Enhancements
+
+- Live Socket.IO Notifications
+- Push Notifications
+- AI Incident Detection
+- Image-based Incident Verification
+- Route Optimization
+- Multi-language Support
+- Offline Emergency Mode
+- Government API Integration
+- Mobile Application
+- Emergency Chat System
+
+---
+
+# 👨‍💻 Team HEXORA
 
 | Name | Role |
 |------|------|
-| **Yogita Sharma** | Team Lead |
-| Sawal | Team Member |
+| **Yogita Sharma** | Team Lead & Full Stack Developer |
+| Sawal Pushkarna | Team Member |
 | Priyanshi | Team Member |
 | Manpreet Dhir | Team Member |
 
 ---
 
 # 🏆 Hackathon
-<img width="4320" height="1440" alt="image" src="https://github.com/user-attachments/assets/77acf5b4-9a00-41ad-abc7-fe58f4ec47bb" />
 
-**Event:** HACKHAZARDS '26
+**Event**
 
-**Theme:** 🏙️ Infrastructure, Mobility & Smart Systems
+HACKHAZARDS '26
 
-SafePath was developed to improve public safety through community-driven emergency response and smart location-based services.
+**Theme**
 
+Infrastructure, Mobility & Smart Systems
+
+SafePath was developed to improve emergency response through technology, enabling communities to collaborate during emergencies using modern web technologies.
 
 ---
 
 # 🤝 Contributing
 
-Contributions, suggestions, and improvements are welcome.
+Contributions are always welcome.
 
-Fork the repository, make your changes, and submit a Pull Request.
+1. Fork the repository
+
+2. Create your feature branch
+
+```bash
+git checkout -b feature-name
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "Added new feature"
+```
+
+4. Push
+
+```bash
+git push origin feature-name
+```
+
+5. Open a Pull Request
 
 ---
 
 # 📄 License
 
-This project is licensed under the **MIT License**.
+Distributed under the MIT License.
+
+See `LICENSE` for more information.
+
+---
+
+# ⭐ Support
+
+If you found this project useful,
+
+please consider giving it a ⭐ on GitHub.
+
+It really helps!
 
 ---
 
 <div align="center">
 
-### ⭐ Thank you for visiting SafePath!
+## Built with ❤️ by Team HEXORA
 
-Built with ❤️ by **Team HEXORA**
+### Together, making communities safer through technology.
 
 </div>
