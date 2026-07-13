@@ -28,69 +28,86 @@ function Map() {
     }
 
     navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        try {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
+  async (position) => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
 
-          setUserLocation({ lat, lon });
+    setUserLocation({ lat, lon });
 
-          setLocation(
-            `${lat.toFixed(4)}° N, ${lon.toFixed(4)}° E`
-          );
-
-          const res = await fetch(
-            `https://safepath-hackhazard-project.onrender.com/api/services/nearby?lat=${lat}&lon=${lon}`
-          );
-
-          const data = await res.json();
-
-          if (!res.ok) {
-            throw new Error(
-              data.error || "Failed to fetch nearby services"
-            );
-          }
-
-          setServices(data);
-          console.log("Services:", data);
-          try {
-            const volunteerRes = await fetch(
-              `https://safepath-hackhazard-project.onrender.com/api/volunteers/verified`
-            );
-
-            const volunteerData = await volunteerRes.json();
-
-            if (volunteerRes.ok) {
-              setVolunteers(volunteerData);
-            }
-            const reportsRes = await fetch(
-              "https://safepath-hackhazard-project.onrender.com/api/reports"
-            );
-
-            const reportsData = await reportsRes.json();
-
-            if (reportsRes.ok) {
-              setReports(reportsData);
-            }
-          } catch (err) {
-            console.error("Volunteer fetch error:", err);
-          }
-          setError(null);
-        } catch (err) {
-          console.error("Service fetch error:", err);
-          setError(err.message);
-        } finally {
-          setLoading(false);
-        }
-      },
-      (err) => {
-        console.error("Location error:", err);
-        setError("Location permission denied");
-        setLoading(false);
-      }
+    setLocation(
+      `${lat.toFixed(4)}° N, ${lon.toFixed(4)}° E`
     );
-  };
 
+    // ---------------- SERVICES ----------------
+    try {
+      const res = await fetch(
+        `https://safepath-hackhazard-project.onrender.com/api/services/nearby?lat=${lat}&lon=${lon}`
+      );
+
+      if (res.ok) {
+        const data = await res.json();
+        setServices(data);
+        console.log("Services:", data);
+      } else {
+        console.log("Services API Failed");
+      }
+    } catch (err) {
+      console.error("Service fetch error:", err);
+    }
+
+    // ---------------- VOLUNTEERS ----------------
+    try {
+      const volunteerRes = await fetch(
+        "https://safepath-hackhazard-project.onrender.com/api/volunteers/verified"
+      );
+
+      if (volunteerRes.ok) {
+        const volunteerData = await volunteerRes.json();
+
+        setVolunteers(volunteerData);
+
+        console.log(
+          "Verified Volunteers:",
+          volunteerData
+        );
+      } else {
+        console.log("Volunteer API Failed");
+      }
+    } catch (err) {
+      console.error("Volunteer fetch error:", err);
+    }
+
+    // ---------------- REPORTS ----------------
+    try {
+      const reportsRes = await fetch(
+        "https://safepath-hackhazard-project.onrender.com/api/reports"
+      );
+
+      if (reportsRes.ok) {
+        const reportsData = await reportsRes.json();
+
+        setReports(reportsData);
+
+        console.log("Reports:", reportsData);
+      } else {
+        console.log("Reports API Failed");
+      }
+    } catch (err) {
+      console.error("Reports fetch error:", err);
+    }
+
+    setError(null);
+    setLoading(false);
+  },
+
+  (err) => {
+    console.error("Location error:", err);
+    setError("Location permission denied");
+    setLoading(false);
+  }
+);
+
+  };
 
   const getIcon = (type) => {
     switch (type) {
@@ -144,9 +161,15 @@ function Map() {
           🟢 You
         </button>
 
-        <button className="legend_btn" onClick={() => setSelectedTarget("police")}>
-          🚓 Police
-        </button>
+        <button
+  className="legend_btn"
+  onClick={() => {
+    console.log("Police clicked");
+    setSelectedTarget("police");
+  }}
+>
+  🚓 Police
+</button>
 
         <button className="legend_btn" onClick={() => setSelectedTarget("hospital")}>
           🏥 Hospital
