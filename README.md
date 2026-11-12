@@ -232,7 +232,6 @@ SecureWay_
 │   └── vite.config.js
 │
 ├── README.md
-└── LICENSE
 ```
 
 ---
