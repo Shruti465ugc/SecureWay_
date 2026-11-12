@@ -28,7 +28,7 @@ A modern full-stack MERN application that enables citizens, volunteers, and admi
 
 ### 🚀 Production
 
-https://SecureWay_-hackhazard-project.onrender.com
+https://secureway-1-ii26.onrender.com
 
 ---
 
@@ -181,7 +181,7 @@ The platform ensures faster communication and more organized emergency coordinat
 
 ## Deployment
 
-- Render: https://SecureWay_-hackhazard-project.onrender.com/
+- Render: https://secureway-1-ii26.onrender.com
 - GitHub: 
 
 ---
