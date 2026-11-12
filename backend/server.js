@@ -32,7 +32,7 @@ app.use('/api/reports', reportsRoute)
 app.use('/api/volunteers', volunteersRoute)
 app.use('/api/sos', sosRoute)
 app.use('/api/services', servicesRoute)
-app.use(express.static(path.join(__dirname, '../frontend/dist')))
+//app.use(express.static(path.join(__dirname, '../frontend/dist')))
 app.use("/api/admin", adminRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/volunteer-applications", volunteerApplicationsRoute);
@@ -43,9 +43,10 @@ app.use(
   assignedVolunteerRoutes
 );
 
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, "../frontend" , "dist" , "index.html"))
 });
+*/
 
 app.get('/', (req, res) => {
   res.send('SafePath backend is running')
