@@ -30,7 +30,7 @@ function EditProfile() {
 
     try {
       const response = await fetch(
-        `https://safepath-hackhazard-project.onrender.com/api/user/${loggedInUser.id}`,
+        `https://SecureWay_-hackhazard-project.onrender.com/api/user/${loggedInUser.id}`,
         {
           method: "PUT",
           headers: {

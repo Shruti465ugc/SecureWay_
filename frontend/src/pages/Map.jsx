@@ -41,7 +41,7 @@ function Map() {
     // ---------------- SERVICES ----------------
     try {
       const res = await fetch(
-        `https://safepath-hackhazard-project.onrender.com/api/services/nearby?lat=${lat}&lon=${lon}`
+        `https://SecureWay_-hackhazard-project.onrender.com/api/services/nearby?lat=${lat}&lon=${lon}`
       );
 
       if (res.ok) {
@@ -58,7 +58,7 @@ function Map() {
     // ---------------- VOLUNTEERS ----------------
     try {
       const volunteerRes = await fetch(
-        "https://safepath-hackhazard-project.onrender.com/api/volunteers/verified"
+        "https://SecureWay_-hackhazard-project.onrender.com/api/volunteers/verified"
       );
 
       if (volunteerRes.ok) {
@@ -80,7 +80,7 @@ function Map() {
     // ---------------- REPORTS ----------------
     try {
       const reportsRes = await fetch(
-        "https://safepath-hackhazard-project.onrender.com/api/reports"
+        "https://SecureWay_-hackhazard-project.onrender.com/api/reports"
       );
 
       if (reportsRes.ok) {

@@ -34,7 +34,7 @@ const handleLogout = () => {
       <nav className="navbar">
         <h2 className="logo">
           <MapPin size={28} className="logo-icon" />
-          SafePath
+          SecureWay_
         </h2>
 
         {/* Desktop Navigation */}
@@ -210,7 +210,7 @@ const handleLogout = () => {
       </section>
 
       <section className="features" id="features">
-        <h2>Why Choose SafePath?</h2>
+        <h2>Why Choose SecureWay_?</h2>
 
         <div className="features-grid">
           <div className="feature-card">
@@ -246,7 +246,7 @@ const handleLogout = () => {
       </section>
 
       <section className="how-it-works" id="how-it-works">
-        <h2>How SafePath Works</h2>
+        <h2>How SecureWay_ Works</h2>
 
         <div className="steps">
           <div className="step">
@@ -272,7 +272,7 @@ const handleLogout = () => {
       </section>
 
       <footer className="footer">
-        <h2>SafePath</h2>
+        <h2>SecureWay_</h2>
 
         <p>
           Building safer communities through faster emergency response and
@@ -285,7 +285,7 @@ const handleLogout = () => {
           <a href="#impact">Impact</a>
         </div>
 
-        <p>© 2026 SafePath. All Rights Reserved.</p>
+        <p>© 2026 SecureWay_. All Rights Reserved.</p>
       </footer>
     </div>
   );

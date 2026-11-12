@@ -23,7 +23,7 @@ function RescueStatus() {
   try {
 
     const res = await fetch(
-      `https://safepath-hackhazard-project.onrender.com/api/sos/tracking/user/${user.id}`
+      `https://SecureWay_-hackhazard-project.onrender.com/api/sos/tracking/user/${user.id}`
     );
 
     if (!res.ok) {

@@ -3,7 +3,7 @@
 
 <div align="center">
 
-<img width="1536" height="1024" alt="SafePath Banner" src="https://github.com/user-attachments/assets/7594acdf-8385-4e38-8255-14dc4cbd6446" />
+<img width="1536" height="1024" alt="SecureWay_ Banner" src="https://github.com/user-attachments/assets/7594acdf-8385-4e38-8255-14dc4cbd6446" />
 
 # 
 
@@ -28,13 +28,13 @@ A modern full-stack MERN application that enables citizens, volunteers, and admi
 
 ### 🚀 Production
 
-https://safepath-hackhazard-project.onrender.com
+https://SecureWay_-hackhazard-project.onrender.com
 
 ---
 
 # 📖 Overview
 
-SafePath is a community-driven emergency response platform designed to improve public safety by connecting citizens, volunteers, and emergency services on a single platform.
+SecureWay_ is a community-driven emergency response platform designed to improve public safety by connecting citizens, volunteers, and emergency services on a single platform.
 
 During emergencies, users can instantly report incidents, request help, discover nearby emergency services, and track rescue progress in real time.
 
@@ -53,11 +53,11 @@ This domain focuses on building software that improves large-scale physical and 
 
 ## 🌟 Theme Alignment
 
-SafePath was developed as a solution under the **Infrastructure, Mobility & Smart Systems** theme.
+SecureWay_ was developed as a solution under the **Infrastructure, Mobility & Smart Systems** theme.
 
 The platform enhances emergency response by enabling citizens, volunteers, and administrators to coordinate efficiently through a centralized digital platform.
 
-### SafePath contributes to this theme by providing:
+### SecureWay_ contributes to this theme by providing:
 
 - 🚨 Real-time emergency incident reporting
 - 🗺️ Live location and interactive mapping
@@ -68,12 +68,12 @@ The platform enhances emergency response by enabling citizens, volunteers, and a
 - 📊 Administrative dashboard for emergency monitoring
 - ⚡ Faster communication during critical situations
 
-By integrating mapping technologies, secure authentication, and centralized emergency management, SafePath helps improve coordination between citizens, volunteers, and emergency responders, contributing to safer and smarter communities.
+By integrating mapping technologies, secure authentication, and centralized emergency management, SecureWay_ helps improve coordination between citizens, volunteers, and emergency responders, contributing to safer and smarter communities.
 
 
 # 💡 Solution
 
-SafePath bridges the gap between people in need and responders by providing:
+SecureWay_ bridges the gap between people in need and responders by providing:
 
 - Real-time emergency reporting
 - Secure authentication system
@@ -184,7 +184,7 @@ The platform ensures faster communication and more organized emergency coordinat
 
 ## Deployment
 
-- Render: https://safepath-hackhazard-project.onrender.com/
+- Render: https://SecureWay_-hackhazard-project.onrender.com/
 - GitHub: 
 
 ---
@@ -213,7 +213,7 @@ The platform ensures faster communication and more organized emergency coordinat
 # 📂 Project Structure
 
 ```text
-SafePath
+SecureWay_
 │
 ├── backend
 │   ├── config
@@ -245,7 +245,7 @@ SafePath
 ## Clone Repository
 
 ```bash
-git clone https://github.com/Codewith-Yogita/SafePath_HACKHAZARD_PROJECT.git
+git clone https://github.com/Shruti465ugc/SecureWay_.git
 ```
 
 ---

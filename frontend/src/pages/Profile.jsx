@@ -26,7 +26,7 @@ function Profile() {
   const checkVolunteer = async (userId) => {
     try {
       const res = await fetch(
-        `https://safepath-hackhazard-project.onrender.com/api/volunteers/me/${userId}`
+        `https://SecureWay_-hackhazard-project.onrender.com/api/volunteers/me/${userId}`
       );
 
       if (res.ok) {

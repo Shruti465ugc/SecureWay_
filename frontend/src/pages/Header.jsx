@@ -58,7 +58,7 @@ const Header = () => {
         <div className="logocard">
           <h2 className="logo">
             <MapPin size={28} className="logo-icon" />
-            SafePath
+            SecureWay_
           </h2>
         </div>
         <div className="profilecard">

@@ -1,6 +1,6 @@
-# SafePath backend
+# SecureWay_ backend
 
-Express API for the SafePath app.
+Express API for the SecureWay_ app.
 
 To run:
 ```

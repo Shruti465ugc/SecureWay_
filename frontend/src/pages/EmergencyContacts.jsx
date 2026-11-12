@@ -25,7 +25,7 @@ function EmergencyContacts() {
   const loadVolunteer = async () => {
     try {
       const res = await fetch(
-        `https://safepath-hackhazard-project.onrender.com/api/sos/status/${user.name}`
+        `https://SecureWay_-hackhazard-project.onrender.com/api/sos/status/${user.name}`
       );
 
       if (!res.ok) return;

@@ -19,7 +19,7 @@ function AdminSidebar() {
       <div className="sidebar-logo">
         <MapPinned size={32} />
         <div>
-          <h2>SafePath</h2>
+          <h2>SecureWay_</h2>
           <span>Admin Panel</span>
         </div>
       </div>

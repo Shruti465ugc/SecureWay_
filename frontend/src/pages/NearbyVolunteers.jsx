@@ -22,7 +22,7 @@ function NearbyVolunteers() {
                 const lon = position.coords.longitude;
 
                 const res = await fetch(
-                    `https://safepath-hackhazard-project.onrender.com/api/volunteers/nearby?lat=${lat}&lon=${lon}&radius=5`
+                    `https://SecureWay_-hackhazard-project.onrender.com/api/volunteers/nearby?lat=${lat}&lon=${lon}&radius=5`
                 );
 
                 const data = await res.json();

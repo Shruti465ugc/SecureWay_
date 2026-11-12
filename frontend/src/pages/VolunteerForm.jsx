@@ -40,7 +40,7 @@ const latitude = position.coords.latitude;
 const longitude = position.coords.longitude;
 
     try {
-      const response = await fetch("https://safepath-hackhazard-project.onrender.com/api/volunteer-applications", {
+      const response = await fetch("https://SecureWay_-hackhazard-project.onrender.com/api/volunteer-applications", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const longitude = position.coords.longitude;
       });
 
       if (response.ok) {
-        alert("🎉 Thank you for volunteering with SafePath!");
+        alert("🎉 Thank you for volunteering with SecureWay_!");
         navigate("/resources");
       } else {
         alert("Something went wrong.");
@@ -72,7 +72,7 @@ const longitude = position.coords.longitude;
     <div className="volunteer-page">
       <div className="volunteer-container">
 
-        <h1>Become a SafePath Volunteer</h1>
+        <h1>Become a SecureWay_ Volunteer</h1>
 
         <p className="subtitle">
           Join our community of volunteers helping create safer neighborhoods.
