@@ -10,7 +10,7 @@ const cors = require('cors')
 const connectDB = require("./config/mongo");
 
 const PORT = process.env.PORT || 5000;
-const _dirname = path.resolve();
+const __dirname = path.resolve();
 
 const app = express()
 app.use(cors())
