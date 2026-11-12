@@ -118,16 +118,6 @@ The platform ensures faster communication and more organized emergency coordinat
 
 ---
 
-## 👥 Volunteer System
-
-- Volunteer Registration
-- Volunteer Dashboard
-- Application Approval
-- Rescue Assignment
-- Rescue Status Updates
-
----
-
 ## 🛠️ Admin Dashboard
 
 - Admin Login
@@ -155,9 +145,6 @@ The platform ensures faster communication and more organized emergency coordinat
 
 - React 19
 - Vite
-- React Router DOM
-- Axios
-- React Leaflet
 - Lucide React
 - CSS3
 
@@ -175,7 +162,6 @@ The platform ensures faster communication and more organized emergency coordinat
 ## Database
 
 - MongoDB Atlas
-- Mongoose ODM
 
 ---
 
@@ -381,43 +367,6 @@ npm run dev
 - Government API Integration
 - Mobile Application
 - Emergency Chat System
-
----
-
-
-# 🤝 Contributing
-
-Contributions are always welcome.
-
-1. Fork the repository
-
-2. Create your feature branch
-
-```bash
-git checkout -b feature-name
-```
-
-3. Commit your changes
-
-```bash
-git commit -m "Added new feature"
-```
-
-4. Push
-
-```bash
-git push origin feature-name
-```
-
-5. Open a Pull Request
-
----
-
-# 📄 License
-
-Distributed under the MIT License.
-
-See `LICENSE` for more information.
 
 ---
 
