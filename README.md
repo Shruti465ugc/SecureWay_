@@ -5,13 +5,12 @@
 
 <img width="1536" height="1024" alt="SafePath Banner" src="https://github.com/user-attachments/assets/7594acdf-8385-4e38-8255-14dc4cbd6446" />
 
-# 🛡️ SafePath
+# 
 
 ### Smart Emergency Response & Community Safety Platform
 
 A modern full-stack MERN application that enables citizens, volunteers, and administrators to collaborate during emergencies through real-time reporting, volunteer management, live location services, and rescue tracking.
 
-**Built for HACKHAZARDS '26**
 
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
@@ -43,14 +42,10 @@ The platform empowers verified volunteers and administrators to coordinate rescu
 
 ---
 
-# 🏆 HackHazards 2026 Submission
 
 <img width="660" height="224" alt="Screenshot 2026-07-13 113447" src="https://github.com/user-attachments/assets/4b9d19ca-77c3-4a4d-8037-89f5aa460bb2" />
 
 
-
-
-## 🎯 Hackathon Theme
 
 **Infrastructure, Mobility & Smart Systems**
 
@@ -75,21 +70,8 @@ The platform enhances emergency response by enabling citizens, volunteers, and a
 
 By integrating mapping technologies, secure authentication, and centralized emergency management, SafePath helps improve coordination between citizens, volunteers, and emergency responders, contributing to safer and smarter communities.
 
-# 🚨 Problem Statement
 
-Emergency response systems often suffer from:
-
-- Slow communication
-- Delayed emergency assistance
-- Lack of nearby volunteer coordination
-- Poor visibility of rescue progress
-- Limited access to emergency resources
-
-These issues increase response time and reduce the effectiveness of emergency management.
-
----
-
-# 💡 Our Solution
+# 💡 Solution
 
 SafePath bridges the gap between people in need and responders by providing:
 
@@ -203,7 +185,7 @@ The platform ensures faster communication and more organized emergency coordinat
 ## Deployment
 
 - Render: https://safepath-hackhazard-project.onrender.com/
-- GitHub: https://github.com/Codewith-Yogita/SafePath_HACKHAZARD_PROJECT
+- GitHub: 
 
 ---
 
@@ -406,30 +388,6 @@ npm run dev
 
 ---
 
-# 👨‍💻 Team HEXORA
-
-| Name | Role |
-|------|------|
-| **Yogita Sharma** | Team Lead & Full Stack Developer |
-| Sawal Pushkarna | Team Member |
-| Priyanshi | Team Member |
-| Manpreet Dhir | Team Member |
-
----
-
-# 🏆 Hackathon
-
-**Event**
-
-HACKHAZARDS '26
-
-**Theme**
-
-Infrastructure, Mobility & Smart Systems
-
-SafePath was developed to improve emergency response through technology, enabling communities to collaborate during emergencies using modern web technologies.
-
----
 
 # 🤝 Contributing
 
@@ -479,7 +437,6 @@ It really helps!
 
 <div align="center">
 
-## Built with ❤️ by Team HEXORA
 
 ### Together, making communities safer through technology.
 

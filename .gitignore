@@ -3,6 +3,10 @@ node_modules
 
 # Environment Variables
 .env
+.env.*
+!.env.example
+dist/
+build/ 
 
 # Logs
 logs
