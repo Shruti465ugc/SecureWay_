@@ -32,7 +32,7 @@ app.use('/api/reports', reportsRoute)
 app.use('/api/volunteers', volunteersRoute)
 app.use('/api/sos', sosRoute)
 app.use('/api/services', servicesRoute)
-app.use(express.static(path.join(_dirname, '/frontend/dist')))
+app.use(express.static(path.join(__dirname, '../frontend/dist')))
 app.use("/api/admin", adminRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/volunteer-applications", volunteerApplicationsRoute);
