@@ -17,7 +17,6 @@ A modern full-stack MERN application that enables citizens, volunteers, and admi
 ![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb)
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange)
-![License](https://img.shields.io/badge/License-MIT-blue)
 ![Status](https://img.shields.io/badge/Status-Deployed-success)
 
 </div>
